@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        //function IsPC() {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        var device = "";
+        if (isAndroid) {
+            device = "andorid";
+            downloadAndroid();
+        }
+        else if (!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) //ios终端)
+        {
+            device = "ios";
+            downloadiOS();
+        }
+        else {
+            device = "pc";
+            location.href = "pcdownload.aspx";
+        }
+        //alert('是否是Android：' + isAndroid);
+        //alert('是否是iOS：' + isiOS);
+        //alert(device);
+        function downloadAndroid() {
+            var link = document.createElement('a');
+            link.href = "/apk/fbs.apk";
+            link.download = "";
+            link.click();
+        }
+        function downloadiOS() {            
+            location.href = "itms-services://?action=download-manifest&url=https://www.lckc8.com/api/plist/5/53";
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

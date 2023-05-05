@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<!-- 
+  Visual Studio global web project settings.
+-->
+<VisualWebDeveloper>
+
+  <Globals>
+        
+  
+    
+  
+    
+  
+    
+  
+    <UserProperties App_3Data_4ProviderSetting_4Test_488pay_1json__JSONSchema="https://jenkins-x.io/schemas/jx-requirements.json" App_3Data_4ProviderSetting_4Official_4QDR001_1json__JSONSchema="https://gitlab.com/fdroid/fdroiddata/-/raw/master/schemas/metadata.json"/>
+  </Globals>
+</VisualWebDeveloper>
