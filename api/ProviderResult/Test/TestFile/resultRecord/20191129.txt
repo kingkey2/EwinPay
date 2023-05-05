@@ -1,0 +1,75 @@
+{
+  "PaymentSerial": "PT2019112906320000000285",
+  "PaymentStatus": 0,
+  "OrderAmount": 100.0,
+  "PaymentAmount": 100.0,
+  "ServiceType": "CP001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "PT2019112906320000000285",
+  "OrderID": "5ee14ad3be55477cb39df966d2a7199e",
+  "OrderDate": "2019-11-29 06:29:40",
+  "Sign": "C97F6A12DD73DB6346E9BB2EE68EFEC1C1B502887A1AB0FEC645B56407A8BCB5",
+  "Status": 0,
+  "Message": null
+}
+{
+  "PaymentSerial": "PT2019112906320000000285",
+  "PaymentStatus": 0,
+  "OrderAmount": 100.0,
+  "PaymentAmount": 100.0,
+  "ServiceType": "CP001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "PT2019112906320000000285",
+  "OrderID": "5ee14ad3be55477cb39df966d2a7199e",
+  "OrderDate": "2019-11-29 06:29:40",
+  "Sign": "C97F6A12DD73DB6346E9BB2EE68EFEC1C1B502887A1AB0FEC645B56407A8BCB5",
+  "Status": 0,
+  "Message": null
+}
+{
+  "PaymentSerial": "PT2019112906320000000285",
+  "PaymentStatus": 0,
+  "OrderAmount": 100.0,
+  "PaymentAmount": 100.0,
+  "ServiceType": "CP001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "PT2019112906320000000285",
+  "OrderID": "5ee14ad3be55477cb39df966d2a7199e",
+  "OrderDate": "2019-11-29 06:29:40",
+  "Sign": "C97F6A12DD73DB6346E9BB2EE68EFEC1C1B502887A1AB0FEC645B56407A8BCB5",
+  "Status": 0,
+  "Message": null
+}
+{
+  "PaymentSerial": "PT2019112906320000000285",
+  "PaymentStatus": 0,
+  "OrderAmount": 100.0,
+  "PaymentAmount": 100.0,
+  "ServiceType": "CP001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "PT2019112906320000000285",
+  "OrderID": "5ee14ad3be55477cb39df966d2a7199e",
+  "OrderDate": "2019-11-29 06:29:40",
+  "Sign": "C97F6A12DD73DB6346E9BB2EE68EFEC1C1B502887A1AB0FEC645B56407A8BCB5",
+  "Status": 0,
+  "Message": null
+}
+{
+  "PaymentSerial": "PT2019112906320000000285",
+  "PaymentStatus": 0,
+  "OrderAmount": 100.0,
+  "PaymentAmount": 100.0,
+  "ServiceType": "CP001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "PT2019112906320000000285",
+  "OrderID": "5ee14ad3be55477cb39df966d2a7199e",
+  "OrderDate": "2019-11-29 06:29:40",
+  "Sign": "C97F6A12DD73DB6346E9BB2EE68EFEC1C1B502887A1AB0FEC645B56407A8BCB5",
+  "Status": 0,
+  "Message": null
+}

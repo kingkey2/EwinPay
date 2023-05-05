@@ -1,0 +1,12 @@
+
+https://www.ueswotc.com/pay/easyPay
+{
+  "apiKey": "d580eb2a6e254cbf929605001932b9d2",
+  "data": "kZaf/3PvCc9NQmXz3EAEQm/pS8aqZX+SbAWsSJbzdDUV26ccSvxvgy/XiKGRADm7ycn28v8xh4hO8MXxh+4zYL9mAGIL/8+nl/l3rstcRueaD4Vw7f7FPt++v1bLGVr/1UxZBhXgHJKI3qoIw+LW4ave1Ce8QvAHGB/utIqqDvn7r9uITyCpP70uS+Jl6eB4oo0AKrT92ZcnntxS6tMf3eaabIDIs7RHvZn5N/sVT1U74LQzPYrFdfOoIhFVhK/H8Mef6Vd4UhM9he7tj+ejUscRPhlUTtyDCa+dbjmdempAhZB/LhalYRirpchM3VqFR5fw5DucZWN39hlR6qGWhrGQ956c6pc+R9GPXpR9LcrA6Lq2vj/bmJNlIHMYeXFRwV5+xmWeaHbJhMMsNCnBrLBsCYApDL/NBUJluxO4226q4id34TigTxGZ46j5OGPDCO4I/4oGRjwoVGQ/YeRLAuDFot4KwT4ZzrroNZTygfBamVUXS80u8f61OQjfzta/EUevR7y92ZlSOQ8Iy1N92g==",
+  "nonce": "4277242018",
+  "timestamp": "636966513184703659",
+  "signature": "5742S6ezDDEWYAZXGI1FC5iBpFcoOhuNXJPalyaG/x8="
+}
+{"msg":"success","data":{"preId":"20707104654684160","thirdOrderId":"WT2019062018310000000140","legalCode":"CNY","legalAmount":10,"symbol":"HKT","supportPay":"3","requestType":"2","userMobile":"0000088820","accountName":"闫顺","account":"6236682830005716658","bankName":"中國建設銀行","imgUrl":null,"status":"2","pushUrl":"http://gpay.dev4.mts.idv.tw/api/ProviderResult/Withdraw_Venus_WOTCPayAsyncNotify","rewriteUrl":null,"result":"未能智能匹配到订单，请稍候再试。","createDate":"2019-06-20 18:32:07","token":null,"tokenExpireTime":null},"code":0}
+{"msg":"success","data":{"preId":"20713439907606528","thirdOrderId":"WT2019062018560000000141","legalCode":"CNY","legalAmount":500,"symbol":"HKT","supportPay":"3","requestType":"2","userMobile":"0000088820","accountName":"闫顺","account":"6236682830005716658","bankName":"中國建設銀行","imgUrl":null,"status":"1","pushUrl":"http://gpay.dev4.mts.idv.tw/api/ProviderResult/Withdraw_Venus_WOTCPayAsyncNotify","rewriteUrl":null,"result":"匹配成功","createDate":"2019-06-20 18:57:17","token":null,"tokenExpireTime":null},"code":0}
+{"msg":"success","data":{"preId":"20721666732912640","thirdOrderId":"WT2019062019290000000142","legalCode":"CNY","legalAmount":500,"symbol":"HKT","supportPay":"3","requestType":"2","userMobile":"0000088820","accountName":"闫顺","account":"6236682830005716658","bankName":"中國建設銀行","imgUrl":null,"status":"1","pushUrl":"http://gpay.dev4.mts.idv.tw/api/ProviderResult/Withdraw_Venus_WOTCPayAsyncNotify","rewriteUrl":null,"result":"匹配成功","createDate":"2019-06-20 19:29:59","token":null,"tokenExpireTime":null},"code":0}

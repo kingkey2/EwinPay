@@ -1,0 +1,30 @@
+{
+  "SendType": 1,
+  "WithdrawSerial": "WT2019121319050000000552",
+  "WithdrawStatus": 3,
+  "OrderAmount": 100.0,
+  "WithdrawAmount": 0.0,
+  "WithdrawCharge": 2.0,
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "OrderID": "45d851d1254845d18ecd700766adcae5",
+  "OrderDate": "2019-12-13 18:20:39",
+  "Sign": "038233018FBFDF398B9B95EDDCAE78133135D7D4ABA9CF0E7FDDF5A7643EF1F2",
+  "Status": 0,
+  "Message": null
+}
+{
+  "SendType": 1,
+  "WithdrawSerial": "WT2019121319090000000553",
+  "WithdrawStatus": 3,
+  "OrderAmount": 100.0,
+  "WithdrawAmount": 0.0,
+  "WithdrawCharge": 2.0,
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "OrderID": "ff4e95571fd24354b5f3e24865de06a8",
+  "OrderDate": "2019-12-13 19:08:52",
+  "Sign": "EC917F766AC3374E431F53235B4CA7511B3A6607FAF10732FB31E43D2DB3ED64",
+  "Status": 0,
+  "Message": null
+}
