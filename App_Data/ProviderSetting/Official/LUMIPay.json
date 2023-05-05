@@ -1,0 +1,30 @@
+﻿{
+  "ProviderCode": "LUMIPay",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://apigw.lumi68.com/api/v1/third-party/create-transactions",
+  "QueryOrderUrl": "https://apigw.lumi68.com/api/v1/third-party/transaction-queries",
+  "QueryBalanceUrl": "https://gwy-mgt.onew20.com/api/get/auth",
+  "MerchantCode": "LuckySprite",
+  "MerchantKey": "bK0Puo80hRg8ChFzjaw4JtnPIKbVfNMq",
+  "NotifyAsyncUrl": "https://ewin-pay.com/api/CallBack/LUMIPayNotify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://apigw.lumi68.com/api/v1/third-party/agency-withdraws",
+  "WithdrawNotifyAsyncUrl": "https://ewin-pay.com/api/CallBack/LUMIPayWithdrawNotify",
+  "QueryWithdrawUrl": "https://apigw.lumi68.com/api/v1/third-party/withdraw-queries",
+  "CallBackUrl": "https://ewin-pay.com/ResultSuccess.cshtml",
+  "RequestType": 2,
+  "ProviderPublicKey": "",
+  "ProviderIP": [
+    "13.228.171.70",
+    "46.137.234.246"
+  ],
+  "ServiceSettings": [
+    { //Ggach原生
+      "ServiceType": "PHP05",
+      "TradeType": "GCASH"
+    }
+  ],
+  "CurrencyTypeSettings": null,
+  "OtherDatas": null,
+  "BankCodeSettings": []
+}

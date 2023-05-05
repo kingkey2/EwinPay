@@ -1,0 +1,29 @@
+﻿{
+  "ProviderCode": "PoPay",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://gwy-mgt.onew20.com/api/transaction/deposit",
+  "QueryOrderUrl": "https://gwy-mgt.onew20.com/api/transaction/deposit/verify",
+  "QueryBalanceUrl": "https://gwy-mgt.onew20.com/api/get/auth",
+  "MerchantCode": "J8U230222171205M2935",
+  "MerchantKey": "2329251713af8c3a930bb375053bfbb4",
+  "NotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/PoPayNotify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://gwy-mgt.onew20.com/api/transaction/withdrawal",
+  "WithdrawNotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/PoPayWithdrawNotify",
+  "QueryWithdrawUrl": "https://gwy-mgt.onew20.com/api/transaction/withdrawal/verify",
+  "CallBackUrl": "http://epay.dev4.mts.idv.tw/ResultSuccess.cshtml",
+  "RequestType": 2,
+  "ProviderPublicKey": "414e751b7544b78d0f0531f58010e699",
+  "ProviderIP": [
+    "18.166.46.195"
+  ],
+  "ServiceSettings": [
+    { //Ggach原生
+      "ServiceType": "PHP01",
+      "TradeType": "007002003"
+    }
+  ],
+  "CurrencyTypeSettings": null,
+  "OtherDatas": null,
+  "BankCodeSettings": []
+}

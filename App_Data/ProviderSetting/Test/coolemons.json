@@ -1,0 +1,29 @@
+﻿{
+  "ProviderCode": "coolemons",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://ja.coolemons.com/order/create",
+  "QueryOrderUrl": "https://ja.coolemons.com/order/status",
+  "QueryBalanceUrl": "",
+  "MerchantCode": "62908",
+  "MerchantKey": "pjuQw3tep0e2ZgjnzVJnEQ",
+  "NotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/coolemonsNotify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://ja.coolemons.com/payout/create",
+  "WithdrawNotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/coolemonsWithdrawNotify",
+  "QueryWithdrawUrl": "",
+  "CallBackUrl": "http://epay.dev4.mts.idv.tw/ResultSuccess.cshtml",
+  "RequestType": 2,
+  "ProviderPublicKey": "",
+  "ProviderIP": [
+    "13.70.43.228"
+  ],
+  "ServiceSettings": [
+    {
+      "ServiceType": "JOOB01",
+      "TradeType": 4
+    }
+  ],
+  "BankCodeSettings": [],
+  "CurrencyTypeSettings": null,
+  "OtherDatas": [ "iXSThEJH6k2TiHURP6yFWQ" ]
+}

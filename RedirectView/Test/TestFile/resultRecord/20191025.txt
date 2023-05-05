@@ -1,0 +1,4 @@
+{"status":false,"msg":"获取失败","data":"{\"Code\":\"2010\",\"Data\":\"\",\"ErrorMsg\":\"不支持该支付金额,详情请咨询服务商\"}"}
+{"status":false,"msg":"获取失败","data":"amount not available! merchants use up 3!"}
+{"status":false,"msg":"获取失败","data":"{\"Code\":\"2010\",\"Data\":\"\",\"ErrorMsg\":\"不支持该支付金额,详情请咨询服务商\"}"}
+{"status":false,"msg":"获取失败","data":"amount not available! merchants use up 3!"}

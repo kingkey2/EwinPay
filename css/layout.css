@@ -1,0 +1,151 @@
+@charset "utf-8";
+/* CSS Document */
+html,body{
+		width: 100%;
+		height: 100%;
+		padding: 0px;
+		margin: 0px;	
+	    font-family: '微軟正黑體', sans-serif, Helvetica Neue, Helvetica, Arial;
+		background: #f1f1f1;
+	}
+	.mainInfo{
+		background: -webkit-linear-gradient(135deg,#fff,#eee);
+		background: -o-linear-gradient(135deg,#fff,#eee);
+		background: -moz-linear-gradient(135deg,#fff,#eee);
+		background: linear-gradient(135deg,#fff,#eee);
+		-webkit-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.1);
+		-moz-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.1);
+		-o-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.1);
+		box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.1);
+	    -webkit-animation: mainInfoAni 0.3s linear  forwards;
+        -moz-animation: mainInfoAni 0.3s linear  forwards;
+        -ms-animation: mainInfoAni 0.3s linear  forwards;
+        -o-animation: mainInfoAni 0.3s linear  forwards;
+        animation: mainInfoAni 0.3s linear  forwards; 
+
+		}
+		@-webkit-keyframes mainInfoAni {
+           from {
+			 opacity: 0.5;
+             margin-top: 40px;
+           }
+           to {
+			 opacity: 1.0;  
+             margin-top: 0px;
+           }			
+         }
+		@-moz-keyframes mainInfoAni {
+           from {
+			 opacity: 0.5;
+             margin-top: 40px;
+           }
+           to {
+			 opacity: 1.0;  
+             margin-top: 0px;
+           }			
+         }
+		@-o-keyframes mainInfoAni {
+           from {
+			 opacity: 0.5;
+             margin-top: 40px;
+           }
+           to {
+			 opacity: 1.0;  
+             margin-top: 0px;
+           }			
+         }
+		@keyframes mainInfoAni {
+           from {
+			 opacity: 0.5;
+             margin-top: 40px;
+           }
+           to {
+			 opacity: 1.0;  
+             margin-top: 0px;
+           }			
+         }
+	.mainWrapper{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		-webkit-align-items: center;
+		-moz-align-items: center;
+		-o-align-items: center;
+		align-items: center;
+		-webkit-justify-content: center;
+		-moz-justify-content: center;
+		-o-justify-content: center;
+		justify-content: center;
+	}
+
+	@media (min-width: 720px) {
+		.mainInfo{
+			position: relative;
+			display: block;
+			text-align: center;
+			width: 400px;
+			height: auto;
+			border-radius: 10px;
+			min-height: 500px;
+		}
+		
+	}
+	@media (max-width: 719px) {
+		.mainInfo{
+			position: relative;
+			display: block;
+			text-align: center;
+			width: 90%;
+			height: 80%;
+			border-radius: 10px;
+			min-height: 350px;
+		}		
+	}
+	.BtnWrapper{
+		width: 100%;
+		height: 60px;
+		position: absolute;
+		left: 0px;
+		bottom: 10px;
+	}
+	.closeBtn{
+		margin: auto;
+		display: block;
+		width: 90%;
+		height: 50px;
+		line-height: 50px;
+		-webkit-background: linear-gradient(135deg,#aaa,#bbb);
+		-moz-background: linear-gradient(135deg,#aaa,#bbb);
+		-o-background: linear-gradient(135deg,#aaa,#bbb);
+		background: linear-gradient(135deg,#aaa,#bbb);
+		border-radius: 6px;
+		color: #fff;
+		cursor: pointer;
+		font-size: 1.2em;
+		-webkit-box-shadow: inset 0px 0px 0px 0px rgba(255,255,255,0.0);
+		-moz-box-shadow: inset 0px 0px 0px 0px rgba(255,255,255,0.0);
+		-o-box-shadow: inset 0px 0px 0px 0px rgba(255,255,255,0.0);
+		box-shadow: inset 0px 0px 0px 0px rgba(255,255,255,0.0);
+		-o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+	
+	}
+	.closeBtn:hover{
+		-moz-background: linear-gradient(135deg,#777,#999);
+		-webkit-background: linear-gradient(135deg,#777,#999);
+		-o-background: linear-gradient(135deg,#777,#999);
+		background: linear-gradient(135deg,#777,#999);
+		-webkit-box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.5);
+		-moz-box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.5);
+		-o-box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.5);
+		box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.5);
+	}
+	.closeBtn:active{
+		-webkit-background: linear-gradient(135deg,#777,#999);
+		-moz-background: linear-gradient(135deg,#777,#999);
+		-o-background: linear-gradient(135deg,#777,#999);
+		background: linear-gradient(135deg,#777,#999);
+		-webkit-box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.5);
+		-moz-box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.5);
+		-o-box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.5);
+		box-shadow: inset 0px 0px 0px 3px rgba(255,255,255,0.5);
+	}

@@ -1,0 +1,6 @@
+﻿@{
+    string K = CodingControl.GetSHA256("CurrencyType=CNY&CompanyCode=qifa888&CompanyKey=50bf0bfb8e3d4a8a83474889068a115e", false);
+    HttpContext.Current.Response.Write(K.ToUpper());
+    HttpContext.Current.Response.Flush();
+    HttpContext.Current.Response.End();
+}

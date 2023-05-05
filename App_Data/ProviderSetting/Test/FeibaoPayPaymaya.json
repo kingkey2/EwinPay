@@ -1,0 +1,381 @@
+﻿{
+  "ProviderCode": "FeibaoPayPaymaya",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://api.feibaopay.com/v3/deposit",
+  "QueryOrderUrl": "https://api.feibaopay.com/v3/check",
+  "QueryBalanceUrl": "",
+  "MerchantCode": "feibaotest",
+  "MerchantKey": "a8ec90c269c3bd8812739a4d710bbb85",
+  "NotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/FeibaoPayPaymayaNotify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://api.feibaopay.com/v3/withdraw",
+  "WithdrawNotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/FeibaoPayPaymayaWithdrawNotify",
+  "QueryWithdrawUrl": "https://api.feibaopay.com/v3/check_withdraw",
+  "CallBackUrl": "http://epay.dev4.mts.idv.tw/ResultSuccess.cshtml",
+  "RequestType": 2,
+  "ProviderPublicKey": "",
+  "ProviderIP": [
+    ""
+  ],
+  "ServiceSettings": [],
+  "CurrencyTypeSettings": null,
+  "OtherDatas": [ "edbeaacdb228dcac" ],
+  "BankBankCodeSettings": [
+    {
+      "BankCode": "BPI",
+      "ProviderBankCode": "BPI/BPI Family Savings Bank"
+    },
+    {
+      "BankCode": "UBP",
+      "ProviderBankCode": "UNION BANK OF THE PHILIPPINES"
+    },
+    {
+      "BankCode": "RCBC",
+      "ProviderBankCode": "RCBC / DiskarTech"
+    },
+    {
+      "BankCode": "ANZBP",
+      "ProviderBankCode": "ANZ Banking Group Ltd."
+    },
+    {
+      "BankCode": "ALKBP",
+      "ProviderBankCode": "AllBank, Inc."
+    },
+    {
+      "BankCode": "AIIPP",
+      "ProviderBankCode": "Amanah Islamic Bank"
+    },
+    {
+      "BankCode": "AUBKP",
+      "ProviderBankCode": "Asia United Bank Corporation"
+    },
+    {
+      "BankCode": "BNORP",
+      "ProviderBankCode": "BDO"
+    },
+    {
+      "BankCode": "BDONP",
+      "ProviderBankCode": "BDO Network Bank"
+    },
+    {
+      "BankCode": "KARUP",
+      "ProviderBankCode": "Bankko Kabayan, Inc"
+    },
+    {
+      "BankCode": "MRTCP",
+      "ProviderBankCode": "Bankko Mabuhay, Inc"
+    },
+    {
+      "BankCode": "BKKBP",
+      "ProviderBankCode": "Bankkok Bank - Manila Branch"
+    },
+    {
+      "BankCode": "BOFAP",
+      "ProviderBankCode": "Bank of America, N.A - Manila Branch"
+    },
+    {
+      "BankCode": "BKCHP",
+      "ProviderBankCode": "Bank of China Ltd. -Manila Branch"
+    },
+    {
+      "BankCode": "PABIP",
+      "ProviderBankCode": "Bank of Commerce"
+    },
+    {
+      "BankCode": "FLRUP",
+      "ProviderBankCode": "Bank of Florida, Inc."
+    },
+    {
+      "BankCode": "MKRUP",
+      "ProviderBankCode": "Bank of Makati, Inc."
+    },
+    {
+      "BankCode": "CIPHP",
+      "ProviderBankCode": "CIMB Bank Philippines, Inc"
+    },
+    {
+      "BankCode": "CTCBP",
+      "ProviderBankCode": "CTBC Bank (Philippines) Corp"
+    },
+    {
+      "BankCode": "RUCAP",
+      "ProviderBankCode": "Camalig Bank, Inc"
+    },
+    {
+      "BankCode": "CNRLP",
+      "ProviderBankCode": "Cantilan Bank, Inc"
+    },
+    {
+      "BankCode": "CELRP",
+      "ProviderBankCode": "Cebuana Lhuillier Bank / Cebuana Xpress"
+    },
+    {
+      "BankCode": "CHBKP",
+      "ProviderBankCode": "China Bank"
+    },
+    {
+      "BankCode": "CHSVP",
+      "ProviderBankCode": "China Bank Savings"
+    },
+    {
+      "BankCode": "CITIP",
+      "ProviderBankCode": "Citibank, N.A. - Manila Branch"
+    },
+    {
+      "BankCode": "COINP",
+      "ProviderBankCode": "Coins.PH"
+    },
+    {
+      "BankCode": "CUOBP",
+      "ProviderBankCode": "Community Rural Bank of Romblon"
+    },
+    {
+      "BankCode": "COUKP",
+      "ProviderBankCode": "Country Builders Bank, Inc"
+    },
+    {
+      "BankCode": "DEUTP",
+      "ProviderBankCode": "Deutsche Bank AG - Manila Branch"
+    },
+    {
+      "BankCode": "DBPHP",
+      "ProviderBankCode": "Development Bank of the Philippines"
+    },
+    {
+      "BankCode": "DCDEP",
+      "ProviderBankCode": "Dumaguete City Development Bank, Inc."
+    },
+    {
+      "BankCode": "DUMTP",
+      "ProviderBankCode": "Dungganon Bank, Inc."
+    },
+    {
+      "BankCode": "EWBCP",
+      "ProviderBankCode": "East West Banking Corporation"
+    },
+    {
+      "BankCode": "EQSNP",
+      "ProviderBankCode": "Equicom Savings Bank, Inc."
+    },
+    {
+      "BankCode": "FIOOP",
+      "ProviderBankCode": "First Consolidated Bank, Inc."
+    },
+    {
+      "BankCode": "GXCHP",
+      "ProviderBankCode": "Gcash"
+    },
+    {
+      "BankCode": "GRBUP",
+      "ProviderBankCode": "Guagua Rural Bank, Inc."
+    },
+    {
+      "BankCode": "HBPHP",
+      "ProviderBankCode": "HSBC"
+    },
+    {
+      "BankCode": "HBSBP",
+      "ProviderBankCode": "HSBC Savings Bank,Inc."
+    },
+    {
+      "BankCode": "ICBCP",
+      "ProviderBankCode": "ICBC - Manila Branch"
+    },
+    {
+      "BankCode": "INGBP",
+      "ProviderBankCode": "ING Bank, N.V - Manila Branch"
+    },
+    {
+      "BankCode": "IBKOP",
+      "ProviderBankCode": "Industrial Bank of Korer - Manila"
+    },
+    {
+      "BankCode": "IORUP",
+      "ProviderBankCode": "Innovative Bank, Inc."
+    },
+    {
+      "BankCode": "CHASP",
+      "ProviderBankCode": "JP Morgan Chase Bank, N.A- Manila Branch"
+    },
+    {
+      "BankCode": "JUCAP",
+      "ProviderBankCode": "Juan Cash"
+    },
+    {
+      "BankCode": "KOEXP",
+      "ProviderBankCode": "KEB Hana Bank - Manila Branch"
+    },
+    {
+      "BankCode": "EAWRP",
+      "ProviderBankCode": "Komo / East West Rural Bank, Inc."
+    },
+    {
+      "BankCode": "KOEXK",
+      "ProviderBankCode": "Korea Exchange Bank"
+    },
+    {
+      "BankCode": "TLBPP",
+      "ProviderBankCode": "Landbank/Of Bank"
+    },
+    {
+      "BankCode": "BOTKP",
+      "ProviderBankCode": "MUFG Bank,Ltd. - Manila Branch"
+    },
+    {
+      "BankCode": "MVSMP",
+      "ProviderBankCode": "MVSM Bank"
+    },
+    {
+      "BankCode": "MAARP",
+      "ProviderBankCode": "Malayan Bank Savings & Mortgaga Bank,Inc."
+    },
+    {
+      "BankCode": "MBBEP",
+      "ProviderBankCode": "Maybank Philippines, Inc."
+    },
+    {
+      "BankCode": "MBTCP",
+      "ProviderBankCode": "Metrobank"
+    },
+    {
+      "BankCode": "MHCBP",
+      "ProviderBankCode": "Mizuho Bank,Ltd. - Manila Branch"
+    },
+    {
+      "BankCode": "CPHIP",
+      "ProviderBankCode": "PBCOM"
+    },
+    {
+      "BankCode": "PNBMP",
+      "ProviderBankCode": "PNB"
+    },
+    {
+      "BankCode": "PHSBP",
+      "ProviderBankCode": "PSBank"
+    },
+    {
+      "BankCode": "PPBUP",
+      "ProviderBankCode": "Philippines Business Bank, Inc."
+    },
+    {
+      "BankCode": "PHTBP",
+      "ProviderBankCode": "Philippines Trust Company"
+    },
+    {
+      "BankCode": "PHVBP",
+      "ProviderBankCode": "Philippines Veterans Bank"
+    },
+    {
+      "BankCode": "PSCOP",
+      "ProviderBankCode": "Producers Savings Bank Corporation"
+    },
+    {
+      "BankCode": "QCDFP",
+      "ProviderBankCode": "Queen City Development Bank"
+    },
+    {
+      "BankCode": "RARLP",
+      "ProviderBankCode": "Rang-Ay Bank, Inc"
+    },
+    {
+      "BankCode": "ROBPP",
+      "ProviderBankCode": "Robinsons Bank Corporation"
+    },
+    {
+      "BankCode": "RUDIP",
+      "ProviderBankCode": "Rural Bank of Digos, Inc."
+    },
+    {
+      "BankCode": "RUGUP",
+      "ProviderBankCode": "Rural Bank of Guinobatan, Inc."
+    },
+    {
+      "BankCode": "SMBCP",
+      "ProviderBankCode": "SMBC - Manila Branch"
+    },
+    {
+      "BankCode": "SETCP",
+      "ProviderBankCode": "Security Bank Corporation"
+    },
+    {
+      "BankCode": "SHBKP",
+      "ProviderBankCode": "Shinhan Bank - Manila Branch"
+    },
+    {
+      "BankCode": "SCBLP",
+      "ProviderBankCode": "Standard Chartered Bank - Manila Branch"
+    },
+    {
+      "BankCode": "STLAP",
+      "ProviderBankCode": "Sterling Bank of Asia, Inc."
+    },
+    {
+      "BankCode": "UCPBP",
+      "ProviderBankCode": "UCPB"
+    },
+    {
+      "BankCode": "UOVBP",
+      "ProviderBankCode": "UOB - Manila Branch"
+    },
+    {
+      "BankCode": "WEDVP",
+      "ProviderBankCode": "Wealth Development Bank Corp."
+    },
+    {
+      "BankCode": "TYBKP",
+      "ProviderBankCode": "Yuanta Savinas Bank Philippines. Inc."
+    },
+    {
+      "BankCode": "MIOCP",
+      "ProviderBankCode": "MINDANAO CONSOLIDATED COOPERATIVE BANK"
+    },
+    {
+      "BankCode": "PRTOP",
+      "ProviderBankCode": "PARTNER RURAL BANK"
+    },
+    {
+      "BankCode": "QCRIP",
+      "ProviderBankCode": "QUEZON CAPITAL RURAL BANK"
+    },
+    {
+      "BankCode": "RCSAP",
+      "ProviderBankCode": "RCBC SAVINGS BANK"
+    },
+    {
+      "BankCode": "USSCP",
+      "ProviderBankCode": "USSC"
+    },
+    {
+      "BankCode": "SHOPP",
+      "ProviderBankCode": "SHOPEEPAY"
+    },
+    {
+      "BankCode": "STARP",
+      "ProviderBankCode": "STARPAY"
+    },
+    {
+      "BankCode": "OMNIP",
+      "ProviderBankCode": "OMNIPAY"
+    },
+    {
+      "BankCode": "PAYMP",
+      "ProviderBankCode": "PAYMAYA PHILIPPINES, INC."
+    },
+    {
+      "BankCode": "GRABP",
+      "ProviderBankCode": "GRABPAY PHILIPPINES"
+    },
+    {
+      "BankCode": "XENDIT",
+      "ProviderBankCode": "Xendit"
+    },
+    {
+      "BankCode": "GCASH",
+      "ProviderBankCode": "Gcash Agent"
+    },
+    {
+      "BankCode": "GRABPAY",
+      "ProviderBankCode": "Grabpay Agent"
+    }
+  ]
+}

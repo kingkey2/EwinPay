@@ -1,0 +1,50 @@
+﻿@{
+    string tt = "[{\"v_pagecode\":\"1013\","
++ "\"v_mid\":\"6099484850\","
++ "\"v_oid\":\"20190218-6099484850-72\","
++ "\"v_rcvname\":\"6099484850\","
++ "\"v_rcvaddr\":\"6099484850\","
++ "\"v_rcvtel\":\"6099484850\","
++ "\"v_goodsname\":\"6099484850\","
++ "\"v_goodsdescription\":\"6099484850\","
++ "\"v_rcvpost\":\"6099484850\","
++ "\"v_qq\":\"6099484850\","
++ "\"v_amount\":\"100.00\","
++ "\"v_ymd\":\"20190218\","
++ "\"v_orderstatus\":\"1\","
++ "\"v_ordername\":\"6099484850\","
++ "\"v_bankno\":\"0000\","
++ "\"v_moneytype\":\"0\","
++ "\"v_url\":\"http://gpay.dev4.mts.idv.tw/api/ProviderResult/FydulunAsyncNotify\","
++ "\"v_noticeurl\":\"http://gpay.dev4.mts.idv.tw/api/ProviderResult/FydulunSyncNotify\","
++ "\"v_app\":\"web\","
++ "\"v_sign\":\"C7DC99261FBCC92910B1D3BC32AD3F5A3A35B6F3\""
++ "}]";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        //window.onload = function () {
+        //    document.getElementById("PostForm").submit();
+        //}
+    </script>
+</head>
+<body>
+    <form id="PostForm" name="PostForm" method="post" enctype="text/plain" action="http://hdzw.fydulun.com/PayInterface.aspx" style="display:block">
+        <div>
+            <table border="0" style="width:100%;">
+                <tr>
+                    <td style="width:70%;">
+                        <input type="text" name="@tt" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:right;"><input type="submit" value="確認" runat="server" id="submitBtn" /></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{"status":false,"msg":"620产品未开通","data":[]}
+{"status":false,"msg":"620产品未开通","data":[]}
+{"status":true,"msg":"获取成功","data":{"url":"http://106.53.34.178:8080/keensting/aliwx/scan/201911081607370001106568"}}
+{"status":true,"msg":"获取成功","data":{"url":"http://mpayg.qmbpay.com?orderid=2019110816292005978&total_fee=300.00&sign=0E19AB1792448E596B22683085256224"}}
+{"status":"0","msg":"1该玩家今日取消订单次数已达上限","data":"E000017"}
+{"status":"0","msg":"1该玩家今日取消订单次数已达上限","data":"E000017"}
+{"status":"1","msg":"success","data":{"tokenId":"fad16d52178a466bb853e579b674e417","orderCode":"PC20191108195718235486267"}}

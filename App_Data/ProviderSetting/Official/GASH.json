@@ -1,0 +1,35 @@
+{
+  "ProviderCode": "GASH",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://stage-api.eg.gashplus.com/CP_Module/order.aspx",
+  "QueryOrderUrl": "https://stage-api.eg.gashplus.com/CP_Module/checkorder.asmx",
+  "QueryBalanceUrl": "",
+  "MerchantCode": "C009450002475",
+  "MerchantKey": "lqvmXJWbUdsqbmWd3oXkZq5ywn2QMfk1",
+  "NotifyAsyncUrl": "http://ewin-pay.com/api/CallBack/GASHNotify",
+  "NotifySyncUrl": "http://ewin-pay.com/GASHSyncNotify.aspx",
+  "WithdrawUrl": "https://stage-api.eg.gashplus.com/CP_Module/settle.asmx",
+  "WithdrawNotifyAsyncUrl": "",
+  "QueryWithdrawUrl": "",
+  "CallBackUrl": "http://ewin-pay.com/ResultSuccess.cshtml",
+  "RequestType": 0,
+  "ProviderPublicKey": "",
+  "ProviderIP": [
+    "156.240.110.195",
+    "156.240.110.199",
+    "154.23.176.138",
+    "154.23.176.142"
+  ],
+  "ServiceSettings": [
+    {
+      "ServiceType": "OOB01",
+      "TradeType": "bank"
+    },
+    {
+      "ServiceType": "OOB03",
+      "TradeType": "bank"
+    }
+  ],
+  "CurrencyTypeSettings": null,
+  "OtherDatas": [ "7E0KAvW2XAM=", "GMGYJXFHJ" ]
+}

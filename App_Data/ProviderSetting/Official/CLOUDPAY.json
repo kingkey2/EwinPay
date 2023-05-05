@@ -1,0 +1,285 @@
+﻿{
+  "ProviderCode": "CLOUDPAY",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://apicloud.gcash.cash/api/transfer",
+  "QueryOrderUrl": "https://apicloud.gcash.cash/api/query",
+  "QueryBalanceUrl": "",
+  "MerchantCode": "LuckySprite",
+  "MerchantKey": "d00756b8bddbea62cc6fd5826262270f",
+  "NotifyAsyncUrl": "https://ewin-pay.com/api/CallBack/CLOUDPAYNotify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://apicloud.gcash.cash/api/daifu",
+  "WithdrawNotifyAsyncUrl": "https://ewin-pay.com/api/CallBack/CLOUDPAYWithdrawNotify",
+  "QueryWithdrawUrl": "https://apicloud.gcash.cash/api/query",
+  "CallBackUrl": "https://ewin-pay.com/ResultSuccess.cshtml",
+  "RequestType": 2,
+  "ProviderPublicKey": "",
+  "ProviderIP": [
+    "18.138.90.103",
+    "52.77.117.133",
+    "52.76.77.106"
+  ],
+  "ServiceSettings": [
+    {
+      "ServiceType": "PHP05", //GGcashDirect
+      "TradeType": "3"
+    }
+  ],
+  "CurrencyTypeSettings": null,
+  "OtherDatas": null,
+  "BankCodeSettings": [
+    {
+      "BankCode": "BPI Bank",
+      "ProviderBankCode": "bpi"
+    },
+    {
+      "BankCode": "BDO Unibank",
+      "ProviderBankCode": "Unibank"
+    },
+    {
+      "BankCode": "Gcash",
+      "ProviderBankCode": "gcash"
+    },
+    {
+      "BankCode": "Metropolitan Bank and Trust Co ",
+      "ProviderBankCode": "mbt"
+    },
+    {
+      "BankCode": "LANDBANK / OFBank",
+      "ProviderBankCode": "LBOB"
+    },
+    {
+      "BankCode": "Security Bank Corporation",
+      "ProviderBankCode": "SBC"
+    },
+    {
+      "BankCode": "Union Bank of the Philippines",
+      "ProviderBankCode": "UBP"
+    },
+    {
+      "BankCode": "Philippine National Bank",
+      "ProviderBankCode": "PNB"
+    },
+    {
+      "BankCode": "China Banking Corporation",
+      "ProviderBankCode": "CBC"
+    },
+    {
+      "BankCode": "East West Banking Corporation",
+      "ProviderBankCode": "EWBC"
+    },
+    {
+      "BankCode": "RCBC/DiskarTech",
+      "ProviderBankCode": "RCBC"
+    },
+    {
+      "BankCode": "United Coconut Planters Bank (UCPB) ",
+      "ProviderBankCode": "UCPB"
+    },
+    {
+      "BankCode": "Philippine Savings Bank",
+      "ProviderBankCode": "PSB"
+    },
+    {
+      "BankCode": "Asia United Bank Corporation",
+      "ProviderBankCode": "AUB"
+    },
+    {
+      "BankCode": "Philippine Bank of Communications",
+      "ProviderBankCode": "PBC"
+    },
+    {
+      "BankCode": "Development Bank of the Philippines",
+      "ProviderBankCode": "DBP"
+    },
+    {
+      "BankCode": "ALLBANK(A Thirft Bank)",
+      "ProviderBankCode": "AB"
+    },
+    {
+      "BankCode": "Asenso",
+      "ProviderBankCode": "Asenso"
+    },
+    {
+      "BankCode": "Bangko Mabuhay",
+      "ProviderBankCode": "BM"
+    },
+    {
+      "BankCode": "Bank of Commerce",
+      "ProviderBankCode": "BC"
+    },
+    {
+      "BankCode": "Dungganon Bank",
+      "ProviderBankCode": "DB"
+    },
+    {
+      "BankCode": "Equicom Savings Bank",
+      "ProviderBankCode": "ESB"
+    },
+    {
+      "BankCode": "GrabPay",
+      "ProviderBankCode": "GP"
+    },
+    {
+      "BankCode": "ING Bank N.V.",
+      "ProviderBankCode": "IB"
+    },
+    {
+      "BankCode": "ISLA Bank",
+      "ProviderBankCode": "ISLA"
+    },
+    {
+      "BankCode": "JuanCash",
+      "ProviderBankCode": "JC"
+    },
+    {
+      "BankCode": "Komo / EastWest Rural Bank",
+      "ProviderBankCode": "Komo"
+    },
+    {
+      "BankCode": "Legazpi Saving Bank",
+      "ProviderBankCode": "LSB"
+    },
+    {
+      "BankCode": "Malayan Bank Saving and Mortage Bank",
+      "ProviderBankCode": "MBS"
+    },
+    {
+      "BankCode": "Maybank Philippnies",
+      "ProviderBankCode": "MBP"
+    },
+    {
+      "BankCode": "Mindanao Consolidated CoopBank",
+      "ProviderBankCode": "MCCB"
+    },
+    {
+      "BankCode": "Netbank",
+      "ProviderBankCode": "NB"
+    },
+    {
+      "BankCode": "OmniPay",
+      "ProviderBankCode": "OP"
+    },
+    {
+      "BankCode": "Partner Rural Bank",
+      "ProviderBankCode": "PRB"
+    },
+    {
+      "BankCode": "PayMaya Philippines",
+      "ProviderBankCode": "PMP"
+    },
+    {
+      "BankCode": "Philippine Business Bank",
+      "ProviderBankCode": "PBB"
+    },
+    {
+      "BankCode": "Philippine Trust Company",
+      "ProviderBankCode": "PTC"
+    },
+    {
+      "BankCode": "Producers Bank",
+      "ProviderBankCode": "PDB"
+    },
+    {
+      "BankCode": "Queenbank",
+      "ProviderBankCode": "QB"
+    },
+    {
+      "BankCode": "Quezon Capital Rural Bank",
+      "ProviderBankCode": "QCRB"
+    },
+    {
+      "BankCode": "RCBC Saving Bank",
+      "ProviderBankCode": "RSB"
+    },
+    {
+      "BankCode": "Robinsons Bank Corporation",
+      "ProviderBankCode": "RBB"
+    },
+    {
+      "BankCode": "Seabank",
+      "ProviderBankCode": "SB"
+    },
+    {
+      "BankCode": "ShopeePay",
+      "ProviderBankCode": "SP"
+    },
+    {
+      "BankCode": "Standard Chartered Bank",
+      "ProviderBankCode": "SCB"
+    },
+    {
+      "BankCode": "Starpay",
+      "ProviderBankCode": "STP"
+    },
+    {
+      "BankCode": "Sterling Bank of Asia",
+      "ProviderBankCode": "SLB"
+    },
+    {
+      "BankCode": "Sun Savings Bank",
+      "ProviderBankCode": "SSB"
+    },
+    {
+      "BankCode": "TayoCash",
+      "ProviderBankCode": "TC"
+    },
+    {
+      "BankCode": "UCPB Savings Bank",
+      "ProviderBankCode": "USB"
+    },
+    {
+      "BankCode": "BanKo,A Subsidiary of BPI",
+      "ProviderBankCode": "BK"
+    },
+    {
+      "BankCode": "Bayad",
+      "ProviderBankCode": "Bayad"
+    },
+    {
+      "BankCode": "BDO NeTwork Bank",
+      "ProviderBankCode": "BNB"
+    },
+    {
+      "BankCode": "Camalig Bank",
+      "ProviderBankCode": "CB"
+    },
+    {
+      "BankCode": "CARD Bank",
+      "ProviderBankCode": "CARD Bank"
+    },
+    {
+      "BankCode": "Cebuana Lhuillier Bank / Cebuana Xpress",
+      "ProviderBankCode": "CLB"
+    },
+    {
+      "BankCode": "China Bank Savings",
+      "ProviderBankCode": "CBS"
+    },
+    {
+      "BankCode": "Coins.ph (DCPay)",
+      "ProviderBankCode": "Coins"
+    },
+    {
+      "BankCode": "CTBC Bank (Philippines) Corporation",
+      "ProviderBankCode": "CTBC"
+    },
+    {
+      "BankCode": "Dumaguete City Development Bank",
+      "ProviderBankCode": "DCDB"
+    },
+    {
+      "BankCode": "USSC Monet Services",
+      "ProviderBankCode": "USSC"
+    },
+    {
+      "BankCode": "Veterans Bank",
+      "ProviderBankCode": "VB"
+    },
+    {
+      "BankCode": "Wealth Development Bank",
+      "ProviderBankCode": "WDB"
+    }
+
+  ]
+}

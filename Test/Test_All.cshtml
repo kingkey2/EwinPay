@@ -1,0 +1,461 @@
+﻿@{
+    var orderID = Guid.NewGuid().ToString().ToUpper();
+    var orderDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+    //var companyKey = "90b73992a32e4e3aa3fd2a261a023675"
+    //var sign = GatewayCommon.GetGPaySign()
+    var IsTestSite = Pay.IsTestSite.ToString();
+}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        var isTestSite='@IsTestSite';
+        var pathUrl;
+        window.onload = function () {
+            if (isTestSite =="True") {
+                pathUrl = "http://gpay.dev4.mts.idv.tw";
+               
+            } else {
+                pathUrl = "https://www.richpay888.com";
+            }
+            this.document.getElementById('PostForm').action = pathUrl + '/api/Gateway/RequirePayment';
+            //document.getElementById("PostForm").submit();
+            document.getElementById("sel_one").onchange = function (event) {
+                changeSignCol(event.currentTarget.options.selectedIndex)
+            };
+            document.getElementById("btnSign").onclick = postSignResult;
+            document.getElementById("btnPayment").onclick = postPaymentResult;
+            document.getElementById("btnBalance").onclick = postBalanceResult;
+            changeSignCol(0);
+        };
+
+        function changeSignCol(index) {
+            $('#signDiv input').each(function (i, v) {
+                if (index == v.dataset.type) {
+                    $(v).parents('tr').show();
+                } else {
+                    $(v).parents('tr').hide();
+                }
+            });
+            $('#signDiv select').each(function (i, v) {
+                if (index == v.dataset.type) {
+                    $(v).parents('tr').show();
+                } else {
+                    $(v).parents('tr').hide();
+                }
+            });
+        }
+
+        function postSignResult(e) {
+            var index = $('#sel_one').val();
+            var postData = {};
+            $('#signDiv input').each(function (i, v) {
+                if (index == v.dataset.type) {
+                    postData[v.dataset.key] = $(v).val();
+                } 
+            });
+            $('#signDiv select').each(function (i, v) {
+                if (index == v.dataset.type) {
+                    postData[v.dataset.key] = $(v).val();
+                }
+            });
+            postData.type = index;
+            return $.ajax({
+                url: pathUrl+'/api/GPayBackend/GetTestSign',
+                type: 'post',
+                data: postData,
+                error: function (xhr) {
+                    alert('Ajax request 發生錯誤');
+                },
+                success: function (response) {
+                    $('#result').html(response);
+                }
+            });
+        }
+
+
+        function postPaymentResult(e) {
+            var postData = {};
+            $('#queryPaymentDiv input').each(function (i, v) {
+                  postData[v.dataset.key] = $(v).val();
+            });
+
+            return $.ajax({
+                url: pathUrl +'/api/GPayBackend/QueryPaymentByAccoting',
+                type: 'post',
+                data: postData,
+                error: function (xhr) {
+                    alert('Ajax request 發生錯誤');
+                },
+                success: function (response) {
+                    $('#result').html(JSON.stringify(response));
+                }
+            });
+        }
+
+        function postBalanceResult(e) {
+            var postData = {};
+            $('#queryBalanceDiv input').each(function (i, v) {
+                if (v.dataset.type == 0) {
+                    postData[v.dataset.key] = $(v).val();
+                } else if (v.dataset.type == 1){
+                    postData[v.dataset.key] = [$(v).val()];
+                }
+            });
+
+            return $.ajax({
+                url: pathUrl +'/api/GPayBackend/QueryProviderBalance',
+                type: 'post',
+                data: postData,
+                error: function (xhr) {
+                    alert('Ajax request 發生錯誤');
+                },
+                success: function (response) {
+                    $('#result').html(JSON.stringify(response));
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h2 style="text-align:center">
+            結果顯示
+        </h2>
+        <div style="height:200px" id="result">
+
+        </div>
+    </div>
+
+    <hr />
+
+    <div>
+        <div>
+            <h2 style="text-align:center">
+                取得簽名
+            </h2>
+            <table id="signDiv" style="width:100%;">
+                <tr>
+                    <td style="text-align:right;">CurrencyType</td>
+                    <td><input style="width:80%;" type="text" data-type="1" data-key="CurrencyType" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">CompanyCode</td>
+                    <td><input style="width:80%;" type="text" data-type="0" data-key="CompanyCode" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">PaymentSerial</td>
+                    <td><input style="width:80%;" type="text" data-type="0" data-key="PaymentSerial" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">OrderID</td>
+                    <td><input style="width:80%;" type="text" data-type="2" data-key="OrderID" value="@orderID" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">OrderAmount</td>
+                    <td><input style="width:80%;" type="text" data-type="2" data-key="OrderAmount" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">OrderDate</td>
+                    <td><input style="width:80%;" type="text" data-type="2" data-key="OrderDate"  value="@orderDate" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">ServiceType</td>
+                    <td>
+                        <select data-type="2" data-key="ServiceType">
+                            <option value="BK001">銀行卡轉帳</option>
+                            <option value="OB002">在線網銀(外充)</option>
+                            <option value="WX003">微信掃碼</option>
+                            <option value="AB001">支付寶轉帳</option>
+                            <option value="AP003">支付寶掃碼(个码)</option>
+                            <option value="AP004">支付寶H5</option>
+                            <option value="AP005">支付寶原生</option>
+                            <option value="AP006">支付宝wap(个码)</option>
+                            <option value="AP007">支付宝扫码(转卡)</option>
+                            <option value="AP008">支付宝wap(转卡)</option>
+                            <option value="AP009">支付宝wap(商家码)</option>
+                            <option value="AP010">支付宝扫码(商家码)</option>
+                            <option value="AP011">支付宝wap(跑分)</option>
+                            <option value="AP012">支付宝扫码(跑分)</option>
+                            <option value="AP013">支付宝wap(原生)</option>
+                            <option value="AP014">支付宝扫码(原生)</option>
+                            <option value="WX004">微信H5</option>
+                            <option value="CP001">雲閃付(个码)</option>
+                            <option value="CP002">云闪付24小时(个码)</option>
+                            <option value="CP003">云闪付(商家码)</option>
+                            <option value="CP004">云闪付24H(商家码)</option>
+                            <option value="CP005">云闪付(转卡)</option>
+                            <option value="CP006">云闪付24H(转卡)</option>
+                            <option value="WX001">微信轉帳</option>
+                            <option value="WX003">微信扫码(个码)</option>
+                            <option value="WX004">微信wap(个码)</option>
+                            <option value="WX005">微信小程序</option>
+                            <option value="WX006">微信wap(转卡)</option>
+                            <option value="WX007">微信扫码(转卡)</option>
+                            <option value="WX008">微信wap(商家码)</option>
+                            <option value="WX009">微信扫码(商家码)</option>
+                            <option value="WX010">微信wap(跑分)</option>
+                            <option value="WX011">微信扫码(跑分)</option>
+                            <option value="WX012">微信wap(原生)</option>
+                            <option value="WX013">微信扫码(原生)</option>
+                            <option value="WX014">微信wap(话费)</option>
+                            <option value="WX015">微信扫码(话费)</option>
+                            <option value="OB003">在線網銀(外充)</option>
+                            <option value="OB002">网银(内充)</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">CurrencyType</td>
+                    <td><input style="width:80%;" type="text" data-type="2" data-key="CurrencyType" value="CNY" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">CompanyCode</td>
+                    <td><input style="width:80%;" type="text" data-type="2" data-key="CompanyCode" /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="getSign" style="width:900px;margin:auto;text-align:center">
+            <select id="sel_one">
+                <option value="0">查詢訂單</option>
+                <option value="1">查詢餘額</option>
+                <option value="2">儲值</option>
+            </select>
+            <button id="btnSign">送出</button>
+        </div>
+    </div>
+
+    <hr />
+
+    <div>
+        <h2 style="text-align:center">
+            查詢餘額
+        </h2>
+        <table id="queryBalanceDiv" style="width:100%;">
+            <tr>
+                <td style="text-align:right;">ArrayProviderCode</td>
+                <td><input style="width:80%;" type="text" data-type="1" data-key="ArrayProviderCode" /></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">CurrencyType</td>
+                <td><input style="width:80%;" type="text" data-type="0" data-key="CurrencyType" /></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">Sign</td>
+                <td><input style="width:80%;" type="text" data-type="0" data-key="Sign" /></td>
+            </tr>
+            <tr>
+                <td style="text-align:center;" colspan="2"><button id="btnBalance">送出</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <hr />
+
+    <div>
+        <h2 style="text-align:center">
+            取得訂單
+        </h2>
+        <table id="queryPaymentDiv" style="width:100%;">
+            <tr>
+                <td style="text-align:right;">CompanyCode</td>
+                <td><input style="width:80%;" type="text" data-key="CompanyCode" /></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">PaymentSerial</td>
+                <td><input style="width:80%;" type="text" data-key="PaymentSerial" /></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">Sign</td>
+                <td><input style="width:80%;" type="text" data-key="Sign" /></td>
+            </tr>
+            <tr>
+                <td style="text-align:center;" colspan="2"><button id="btnPayment">送出</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <hr />
+
+    <h2 style="text-align:center">
+        儲值送出
+    </h2>
+
+    <form id="PostForm" name="PostForm" method="post" action="">
+
+        @*<form id="PostForm" name="PostForm" method="post" action="https://gateway.asiapaycenter.com/gateway.do" style="display:none">*@
+        <div>
+            <table border="0" style="width:100%;">
+                <tr>
+                    <td style="width:30%; text-align:right;">CompanyCode</td>
+                    <td style="width:70%;"><input type="text" name="CompanyCode" value="Forich888" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">CurrencyType</td>
+                    <td><input type="text" name="CurrencyType" value="CNY" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">ServiceType</td>
+                    <td>
+                        <select name="ServiceType">
+                            <option value="BK001">銀行卡轉帳</option>
+                            <option value="OB002">在線網銀(外充)</option>
+                            <option value="WX003">微信掃碼</option>
+                            <option value="AB001">支付寶轉帳</option>
+                            <option value="AP003">支付寶掃碼(个码)</option>
+                            <option value="AP004">支付寶H5</option>
+                            <option value="AP005">支付寶原生</option>
+                            <option value="AP006">支付宝wap(个码)</option>
+                            <option value="AP007">支付宝扫码(转卡)</option>
+                            <option value="AP008">支付宝wap(转卡)</option>
+                            <option value="AP009">支付宝wap(商家码)</option>
+                            <option value="AP010">支付宝扫码(商家码)</option>
+                            <option value="AP011">支付宝wap(跑分)</option>
+                            <option value="AP012">支付宝扫码(跑分)</option>
+                            <option value="AP013">支付宝wap(原生)</option>
+                            <option value="AP014">支付宝扫码(原生)</option>
+                            <option value="WX004">微信H5</option>
+                            <option value="CP001">雲閃付(个码)</option>
+                            <option value="CP002">云闪付24小时(个码)</option>
+                            <option value="CP003">云闪付(商家码)</option>
+                            <option value="CP004">云闪付24H(商家码)</option>
+                            <option value="CP005">云闪付(转卡)</option>
+                            <option value="CP006">云闪付24H(转卡)</option>
+                            <option value="WX001">微信轉帳</option>
+                            <option value="WX003">微信扫码(个码)</option>
+                            <option value="WX004">微信wap(个码)</option>
+                            <option value="WX005">微信小程序</option>
+                            <option value="WX006">微信wap(转卡)</option>
+                            <option value="WX007">微信扫码(转卡)</option>
+                            <option value="WX008">微信wap(商家码)</option>
+                            <option value="WX009">微信扫码(商家码)</option>
+                            <option value="WX010">微信wap(跑分)</option>
+                            <option value="WX011">微信扫码(跑分)</option>
+                            <option value="WX012">微信wap(原生)</option>
+                            <option value="WX013">微信扫码(原生)</option>
+                            <option value="WX014">微信wap(话费)</option>
+                            <option value="WX015">微信扫码(话费)</option>
+                            <option value="OB003">在線網銀(外充)</option>
+                            <option value="OB002">网银(内充)</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">BankCode</td>
+                    <td>
+                        <select name="BankCode">
+                            <option value="ABC">中國農業銀行</option>
+                            <option value="ALIPAY">支付寶轉帳銀行卡</option>
+                            <option value="BCCB">北京銀行</option>
+                            <option value="BOC">中國銀行</option>
+                            <option value="BOS">上海銀行</option>
+                            <option value="CCB">中國建設銀行</option>
+                            <option value="CEB">中國光大銀行</option>
+                            <option value="CIB">興業銀行</option>
+                            <option value="CITIC">中信銀行</option>
+                            <option value="CMB">招商銀行</option>
+                            <option value="CMBC">中國民生銀行</option>
+                            <option value="COMM">交通銀行</option>
+                            <option value="GDB">廣發銀行</option>
+                            <option value="HXB">華夏銀行</option>
+                            <option value="ICBC">中國工業銀行</option>
+                            <option value="PSBC">中國郵政儲蓄銀行</option>
+                            <option value="SPDB">浦發銀行</option>
+                            <option value="SZPAB">平安銀行</option>
+                            <option value="WECHAT">微信轉帳銀行卡</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">ClientIP</td>
+                    <td><input type="text" name="ClientIP" value="112.121.69.20" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">OrderID</td>
+                    <td><input type="text" name="OrderID" value="@orderID" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">OrderDate</td>
+                    <td><input type="text" name="OrderDate" value="@orderDate" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">OrderAmount</td>
+                    <td><input type="text" name="OrderAmount" value="" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">ReturnURL</td>
+                    <td><input type="text" name="ReturnURL" value="http://gpay.dev4.mts.idv.tw/api/ProviderResult/TestReturnTwo" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">State</td>
+                    <td><input type="text" name="State" value="testData=20" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">Sign</td>
+                    <td><input type="text" name="Sign" value="Sign" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center;"><input type="submit" value="確認" runat="server" id="submitBtn" /></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <hr/>
+    <div style="text-align:center">
+        <h2>可測試商戶</h2>
+        <div style="margin:80px">
+            <p>CompanyCode:99Demo_Bibao</p>
+            @*<p>CompanyKey:46608e9fecea45f6a06f7b4e20ac4232</p>*@
+            <p>微信掃碼、支付寶掃碼、銀行卡轉帳</p>
+            <p>儲值、查訂單、查餘額</p>
+            <p>ProvideCode:BibaoPay</p>
+        </div>
+        <div style="margin:80px">
+            <p>CompanyCode:99Demo_FBD</p>
+            @*<p>CompanyKey:46608e9fecea45f6a06f7b4e20ac4232</p>*@
+            <p>(付幣達)</p>
+            <p>微信掃碼、支付寶掃碼、銀行卡轉帳</p>
+            <p>儲值</p>
+            <p>ProvideCode:FBDPay</p>
+        </div>
+        <div style="margin:80px">
+            <p>CompanyCode:99Demo_YPay</p>
+            @*<p>CompanyKey:46608e9fecea45f6a06f7b4e20ac4232</p>*@
+            <p>雲閃付、支付寶轉帳、在線網銀</p>
+            <p>在線網銀，需填入正確的銀行代碼</p>
+            <p>儲值、查訂單</p>
+            <p>ProvideCode:YPay</p>
+        </div>
+        <div style="margin:80px">
+            <p>CompanyCode:99Demo_WOTCP</p>
+            @*<p>CompanyKey:abcfbb12e2d1443381052d1dff6bc4fa</p>*@
+            <p>微信掃碼、支付寶掃碼、銀行卡轉帳</p>
+            <p>儲值、查訂單</p>
+            <p>ProvideCode:WOTCPay</p>
+        </div>
+        <div style="margin:80px">
+            <p>CompanyCode:99Demo_Yale</p>
+            @*<p>CompanyKey:76bf01bdd7b34bcd80d39fe73a30e236</p>*@
+            <p>微信H5、微信掃碼、支付寶H5、支付寶掃碼</p>
+            <p>儲值、查訂單</p>
+            <p>ProvideCode:YalePay</p>
+        </div>
+        <div style="margin:80px">
+            <p>CompanyCode:99Demo_168</p>
+            @*<p>CompanyKey:c04a2f9161b24df5b13a91a5f8003b85</p>*@
+            <p>在線網銀、支付寶掃碼、雲閃付</p>
+            <p>儲值、查訂單、查餘額</p>
+            <p>ProvideCode:168Pay</p>
+        </div>
+        <div style="margin:80px">
+            <p>CompanyCode:99Demo_All</p>
+            @*<p>CompanyKey:3836f1ad11b44af782f7c333ef6cb2e9</p>*@
+            <p>微信掃碼、支付寶掃碼、銀行卡轉帳、微信H5、支付寶H5、在線網銀、雲閃付</p>
+        </div>
+    </div>
+</body>
+</html>

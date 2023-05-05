@@ -1,0 +1,30 @@
+﻿{
+  "ProviderCode": "VirtualPay",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://noid.kesikomi-robo.com/api/set/set_request.php",
+  "QueryOrderUrl": "",
+  "QueryBalanceUrl": "",
+  "MerchantCode": "1001",//存款商戶號
+  "MerchantKey": "3591499aa0e3dcd342fef3343ef08eb5",//存款Key
+  "NotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/VirtualPayNotify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://moneytransfer-system.com/api/",
+  "WithdrawNotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/VirtualPayWithdrawNotify",
+  "QueryWithdrawUrl": "",
+  "CallBackUrl": "http://epay.dev4.mts.idv.tw/ResultSuccess.cshtml",
+  "RequestType": 2,
+  "ProviderPublicKey": "",
+  "ProviderIP": [
+    "153.120.112.234",
+    "153.120.112.106",
+    "133.167.18.39"
+  ],
+  "ServiceSettings": [
+    {
+      "ServiceType": "JOOB06",
+      "TradeType": "1"
+    }
+  ],
+  "CurrencyTypeSettings": null,
+  "OtherDatas": [ "aaa@jan39.com", "9cd44e5a021b2ab730c15d19f8cec2f5" ]//[0]存款mail,[1]出款api key
+}

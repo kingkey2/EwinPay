@@ -1,0 +1,29 @@
+﻿{
+  "ProviderCode": "coolemons",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://ja.coolemons.com/order/create",
+  "QueryOrderUrl": "https://ja.coolemons.com/order/status",
+  "QueryBalanceUrl": "",
+  "MerchantCode": "62908",
+  "MerchantKey": "pjuQw3tep0e2ZgjnzVJnEQ",
+  "NotifyAsyncUrl": "https://ewin-pay.com/api/CallBack/coolemonsNotify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://ja.coolemons.com/payout/create",
+  "WithdrawNotifyAsyncUrl": "https://ewin-pay.com/api/CallBack/coolemonsWithdrawNotify",
+  "QueryWithdrawUrl": "",
+  "CallBackUrl": "https://ewin-pay.com/ResultSuccess.cshtml",
+  "RequestType": 2,
+  "ProviderPublicKey": "",
+  "ProviderIP": [
+    "13.70.43.228"
+  ],
+  "ServiceSettings": [
+    {
+      "ServiceType": "JOOB01",
+      "TradeType": 4
+    }
+  ],
+  "BankCodeSettings": [],
+  "CurrencyTypeSettings": null,
+  "OtherDatas": [ "iXSThEJH6k2TiHURP6yFWQ" ]
+}

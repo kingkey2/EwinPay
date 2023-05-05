@@ -1,0 +1,30 @@
+﻿{
+  "ProviderCode": "GstarPay",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://gwy-mgt.fco3v.com/api/transaction/deposit",
+  "QueryOrderUrl": "https://gwy-mgt.fco3v.com/api/transaction/deposit/verify",
+  "QueryBalanceUrl": "https://gwy-mgt.fco3v.com/api/get/auth",
+  "MerchantCode": "A4V230307195446M8291",
+  "MerchantKey": "50f1ca9321e76f5a8250fcf7ffb1b812",
+  "NotifyAsyncUrl": "https://ewin-pay.com/api/CallBack/GstarPayNotify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://gwy-mgt.fco3v.com/api/transaction/withdrawal",
+  "WithdrawNotifyAsyncUrl": "https://ewin-pay.com/api/CallBack/GstarPayWithdrawNotify",
+  "QueryWithdrawUrl": "https://gwy-mgt.fco3v.com/api/transaction/withdrawal/verify",
+  "CallBackUrl": "https://ewin-pay.com/ResultSuccess.cshtml",
+  "RequestType": 2,
+  "ProviderPublicKey": "290efaa521da18fea5b2e409619fb519",
+  "ProviderIP": [
+    "18.166.25.158",
+    "18.166.46.195"
+  ],
+  "ServiceSettings": [
+    { //Ggach原生
+      "ServiceType": "PHP01",
+      "TradeType": "007002001"
+    }
+  ],
+  "CurrencyTypeSettings": null,
+  "OtherDatas": null,
+  "BankCodeSettings": []
+}

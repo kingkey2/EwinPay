@@ -1,0 +1,58 @@
+{"status":false,"msg":"获取失败","data":"no account!"}
+{"status":false,"msg":"获取失败","data":"no account!"}
+{"status":true,"msg":"获取成功","data":{"url":"http://106.53.34.178:8080/keensting/aliwx/scan/201911151343170001109709"}}
+{
+  "Status": 200,
+  "Msg": "success",
+  "Data": {
+    "Amount": "104.99",
+    "MerchantOrderNumber": "15737991850870044142",
+    "PaymentLink": "http://go.ypaygo.com/home/directurl.do?jumpUrl=http%3A%2F%2Frrd.me%2FeXExp",
+    "QrPaymentLink": "http://rrd.me/eXExp",
+    "Remarks": "none",
+    "TransactionTime": "1573799185"
+  }
+}
+{
+  "Status": 200,
+  "Msg": "success",
+  "Data": {
+    "Amount": "108.92",
+    "MerchantOrderNumber": "15738000246375531653",
+    "PaymentLink": "http://go.ypaygo.com/home/directurl.do?jumpUrl=http%3A%2F%2Frrd.me%2FeXEBK",
+    "QrPaymentLink": "http://rrd.me/eXEBK",
+    "Remarks": "none",
+    "TransactionTime": "1573800024"
+  }
+}
+http://go.ypaygo.com/home/directurl.do?jumpUrl=http%3A%2F%2Frrd.me%2FeXEBK
+{
+  "Status": 200,
+  "Msg": "success",
+  "Data": {
+    "Amount": "101.85",
+    "MerchantOrderNumber": "15738002714156768156",
+    "PaymentLink": "http://go.ypaygo.com/home/directurl.do?jumpUrl=http%3A%2F%2Frrd.me%2FeXEF7",
+    "QrPaymentLink": "http://rrd.me/eXEF7",
+    "Remarks": "none",
+    "TransactionTime": "1573800271"
+  }
+}
+http://go.ypaygo.com/home/directurl.do?jumpUrl=http%3A%2F%2Frrd.me%2FeXEF7
+{
+  "Status": 200,
+  "Msg": "success",
+  "Data": {
+    "Amount": "108.36",
+    "MerchantOrderNumber": "15738004451882728545",
+    "PaymentLink": "http://go.ypaygo.com/home/directurl.do?jumpUrl=http%3A%2F%2Frrd.me%2FeXEJT",
+    "QrPaymentLink": "http://rrd.me/eXEJT",
+    "Remarks": "none",
+    "TransactionTime": "1573800445"
+  }
+}
+http://go.ypaygo.com/home/directurl.do?jumpUrl=http%3A%2F%2Frrd.me%2FeXEJT
+{
+  "PaymentSerial": "PT2019111221560000000168",
+  "Sign": "UloXiw2uTyCVza0TUoKAaCfK+ZYPe4+Cgn1jdFP4OuY="
+}

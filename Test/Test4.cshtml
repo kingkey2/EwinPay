@@ -1,0 +1,132 @@
+﻿@{
+    var orderID = Guid.NewGuid().ToString("N");
+    var orderDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+    //var companyKey = "90b73992a32e4e3aa3fd2a261a023675"
+    //var sign = GatewayCommon.GetGPaySign()
+    var IsTestSite = Pay.IsTestSite.ToString();
+}
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+            var pathUrl='';
+            var isTestSite='@IsTestSite';
+            window.onload = function () {
+                if (isTestSite == "True") {
+                    pathUrl = "http://gpay.dev4.mts.idv.tw";
+
+                } else {
+                    pathUrl = "https://www.richpay888.com";
+                }
+                this.document.getElementById('PostForm').action = pathUrl + '/api/Gateway/RequireWithdraw';
+
+            
+        }
+
+        function btnSign() {
+            var postData = {};
+            $('#PostForm input').each(function (i, v) {
+         
+                postData[$(v).attr('Name')] = $(v).val();
+              
+            });
+            console.log(postData);
+            $.ajax({
+                url: pathUrl + '/api/GPayBackend/GetTestSign2',
+                type: 'post',
+                data: postData,
+                error: function (xhr) {
+                    alert('Ajax request 發生錯誤');
+                },
+                success: function (response) {
+                    $('#Sign').val(response);
+                }
+            });
+        }
+    
+     
+        </script>
+</head>
+<body>
+    <button id="getSign" onclick="btnSign()">取得签名</button>
+    <form id="PostForm" name="PostForm" method="post" action="">
+
+        @*<form id="PostForm" name="PostForm" method="post" action="https://gateway.asiapaycenter.com/gateway.do" style="display:none">*@
+        <div>
+
+            <table border="0" style="width:100%;">
+                <tr>
+                    <td style="width:30%; text-align:right;">CompanyCode</td>
+                    <td style="width:70%;"><input type="text" name="CompanyCode" value="GPayTest" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">CurrencyType</td>
+                    <td><input type="text" name="CurrencyType" value="CNY" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">OrderAmount</td>
+                    <td><input type="text" name="OrderAmount" value="10" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">BankCard </td>
+                    <td><input type="text" name="BankCard" value="" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">BankCardName</td>
+                    <td><input type="text" name="BankCardName" value="施宗助" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">BankName </td>
+                    <td><input type="text" name="BankName" value="工商银行" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">BankBranchName </td>
+                    <td><input type="text" name="BankBranchName" value="漳州开发区支行" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">OwnProvince</td>
+                    <td><input type="text" name="OwnProvince" value="福建" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">OwnCity </td>
+                    <td><input type="text" name="OwnCity" value="漳州" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">OrderID  </td>
+                    <td><input type="text" name="OrderID" value="@orderID" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">OrderDate </td>
+                    <td><input type="text" name="OrderDate" value="@orderDate" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">ReturnUrl </td>
+                    <td><input type="text" name="ReturnUrl" value="http://gpay.dev4.mts.idv.tw/api/ProviderResult/TestWithdrawReturn" style="width:80%;" /></td>
+                </tr>
+
+                <tr>
+                    <td style="text-align:right;">ServiceType</td>
+                    <td><input type="text" name="ServiceType" value="CP001" style="width:80%;" /></td>
+                </tr>
+
+                <tr>
+                    <td style="text-align:right;">ClientIP</td>
+                    <td><input type="text" name="ClientIP" value="128.1.1.99" style="width:80%;" /></td>
+                </tr>
+
+                <tr>
+                    <td style="text-align:right;">Sign</td>
+                    <td><input type="text" name="Sign" id="Sign" value="Sign" style="width:80%;" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:right;"><input type="submit" value="確認" runat="server" id="submitBtn" /></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

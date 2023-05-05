@@ -1,0 +1,28 @@
+﻿{
+  "ProviderCode": "Nissin",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://api.nissinpay.io/gateway/deposit",
+  "QueryOrderUrl": "https://api.nissinpay.io/gateway/query",
+  "QueryBalanceUrl": "",
+  "MerchantCode": "62ff099aba98647630d923c2",
+  "MerchantKey": "03c114f50ba86da8ac9ad2669cc83a25ddb6523210c5576167d1bfbc30d2f411",
+  "NotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/NissinNotify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://api.nissinpay.io/gateway/withdraw",
+  "WithdrawNotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/NissinWithdrawNotify",
+  "QueryWithdrawUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/NissinWithdrawCheck",
+  "CallBackUrl": "http://epay.dev4.mts.idv.tw/ResultSuccess.cshtml",
+  "RequestType": 2,
+  "ProviderPublicKey": "",
+  "ProviderIP": [
+    "35.201.209.217"
+  ],
+  "ServiceSettings": [
+    {
+      "ServiceType": "OOB01",
+      "TradeType": "1"
+    }
+  ],
+  "CurrencyTypeSettings": null,
+  "OtherDatas": null
+}

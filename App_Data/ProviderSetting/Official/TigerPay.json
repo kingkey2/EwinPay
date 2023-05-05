@@ -1,0 +1,18 @@
+﻿{
+  "ProviderCode": "TigerPay",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://secure.tiger-pay.com/dashboard/settlement.php",
+  "QueryOrderUrl": "https://secure.tiger-pay.com/api/settlement_result.php",
+  "QueryBalanceUrl": "",
+  "MerchantCode": "10095",
+  "MerchantKey": "0P5TXJUu4Kr",
+  "NotifyAsyncUrl": "https://ewin-pay.com/api/CallBack/TigerPayNotify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://secure.tiger-pay.com/api/MoneyRequest.php",
+  "WithdrawNotifyAsyncUrl": "https://ewin-pay.com/api/CallBack/TigerPayWithdrawNotify",
+  "CallBackUrl": "https://ewin-pay.com/ResultSuccess.cshtml",
+  "RequestType": 0,
+  "ProviderPublicKey": "MaharaJa5L6vjgIi",
+  "CurrencyTypeSettings": null,
+  "OtherDatas": [ "566406" ] //公司帳戶ID
+}

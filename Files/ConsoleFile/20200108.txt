@@ -1,0 +1,60 @@
+{
+  "PaymentSerial": "PT2020010819220000013102",
+  "PaymentStatus": 0,
+  "OrderAmount": 300.0,
+  "PaymentAmount": 300.0,
+  "ServiceType": "AP006",
+  "CurrencyType": "CNY",
+  "CompanyCode": "bzxigua",
+  "BankSequenceID": "",
+  "OrderID": "2710768bc2fa4652a301aeb012a4589f",
+  "OrderDate": "2020-01-08 19:16:59",
+  "Sign": "FACB58C9ED2B99DFB66490EF383077DACE74D9139F5DA6528AA3476C62A68D43",
+  "Status": 0,
+  "Message": null
+} 7:24 PM
+{
+  "PaymentSerial": "PT2020010819220000013102",
+  "PaymentStatus": 0,
+  "OrderAmount": 300.0,
+  "PaymentAmount": 300.0,
+  "ServiceType": "AP006",
+  "CurrencyType": "CNY",
+  "CompanyCode": "bzxigua",
+  "BankSequenceID": "",
+  "OrderID": "2710768bc2fa4652a301aeb012a4589f",
+  "OrderDate": "2020-01-08 19:16:59",
+  "Sign": "FACB58C9ED2B99DFB66490EF383077DACE74D9139F5DA6528AA3476C62A68D43",
+  "Status": 0,
+  "Message": null
+} 7:24 PM
+{
+  "PaymentSerial": "PT2020010819220000013102",
+  "PaymentStatus": 0,
+  "OrderAmount": 300.0,
+  "PaymentAmount": 300.0,
+  "ServiceType": "AP006",
+  "CurrencyType": "CNY",
+  "CompanyCode": "bzxigua",
+  "BankSequenceID": "",
+  "OrderID": "2710768bc2fa4652a301aeb012a4589f",
+  "OrderDate": "2020-01-08 19:16:59",
+  "Sign": "FACB58C9ED2B99DFB66490EF383077DACE74D9139F5DA6528AA3476C62A68D43",
+  "Status": 0,
+  "Message": null
+} 7:24 PM
+{
+  "PaymentSerial": "PT2020010819220000013102",
+  "PaymentStatus": 0,
+  "OrderAmount": 300.0,
+  "PaymentAmount": 300.0,
+  "ServiceType": "AP006",
+  "CurrencyType": "CNY",
+  "CompanyCode": "bzxigua",
+  "BankSequenceID": "",
+  "OrderID": "2710768bc2fa4652a301aeb012a4589f",
+  "OrderDate": "2020-01-08 19:16:59",
+  "Sign": "FACB58C9ED2B99DFB66490EF383077DACE74D9139F5DA6528AA3476C62A68D43",
+  "Status": 0,
+  "Message": null
+} 7:36 PM

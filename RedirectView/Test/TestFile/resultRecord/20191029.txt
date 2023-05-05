@@ -1,0 +1,11 @@
+{"status":false,"msg":"获取失败","data":"all of agent account were used up!"}
+{"status":false,"msg":"获取失败","data":"all of agent account were used up!"}
+{"status":true,"msg":"获取成功","data":{"url":"http://mpayg.qmbpay.com?orderid=2019102919010756845&total_fee=300.00&sign=41974012EC0C735E7FFF617C28DB2F4F"}}
+{"status":false,"msg":"获取失败","data":"all of agent account were used up!"}
+{"status":false,"msg":"获取失败","data":"all of agent account were used up!"}
+{"status":true,"msg":"获取成功","data":{"url":"http://mpayg.qmbpay.com?orderid=2019102919034961829&total_fee=300.00&sign=07D9DF148E3994245A683F321B7955E2"}}
+{"status":true,"msg":"获取成功","data":{"url":"http://106.53.34.178:8080/keensting/aliwx/scan/201910291904030001103737"}}
+{"status":false,"msg":"623产品未开通","data":[]}
+{"status":true,"msg":"获取成功","data":{"url":"http://www.tmallpay.xyz/trade/pay?app_id=52206075&amount=30000&order_no=2019102919050253626&device=alipay_wp&notify_url=http%3A%2F%2F122.114.92.203%3A8025%2Fpay%2Ftmf_alipay%2Fnotify.php&return_url=http%3A%2F%2F122.114.92.203%3A8025%2Fpay%2Ftmf_alipay%2Freturn.php&sign=c22441a781f048c42440691e330af376"}}
+{"status":true,"msg":"获取成功","data":{"url":"http://www.tmallpay.xyz/trade/pay?app_id=52206075&amount=30000&order_no=2019102919052024949&device=alipay_wp&notify_url=http%3A%2F%2F122.114.92.203%3A8025%2Fpay%2Ftmf_alipay%2Fnotify.php&return_url=http%3A%2F%2F122.114.92.203%3A8025%2Fpay%2Ftmf_alipay%2Freturn.php&sign=08a5de11ae144b7f72ea7b2f8cc3645a"}}
+{"status":false,"msg":"获取失败","data":"{\"Code\":\"2010\",\"Data\":\"\",\"ErrorMsg\":\"不支持该支付金额,详情请咨询服务商\"}"}

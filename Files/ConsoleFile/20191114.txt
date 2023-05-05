@@ -1,0 +1,94 @@
+{"status":false,"msg":"渠道未正确配置","data":[]}
+{"status":false,"msg":"渠道未正确配置","data":[]}
+{"status":false,"msg":"渠道未正确配置","data":[]}
+{"status":false,"msg":"620产品未开通","data":[]}
+{"status":false,"msg":"620产品未开通","data":[]}
+{"status":false,"msg":"渠道未正确配置","data":[]}
+{"status":false,"msg":"获取失败","data":"no account!"}
+{"status":false,"msg":"获取失败","data":"no account!"}
+{"status":false,"msg":"渠道未正确配置","data":[]}
+{"status":false,"msg":"获取失败","data":{"retcode":1,"retmsg":"暂无订单"}}
+{"status":false,"msg":"获取失败","data":"no account!"}
+{"status":true,"msg":"获取成功","data":{"url":"http://mpayg.qmbpay.com?orderid=2019111418263090187&total_fee=500.00&sign=993C14A0E4946601B92861D6ACC2F612"}}
+{"status":false,"msg":"获取失败","data":"no account!"}
+{"status":false,"msg":"获取失败","data":{"retcode":1,"retmsg":"暂无订单"}}
+{"status":false,"msg":"获取失败","data":{"retcode":1,"retmsg":"暂无订单"}}
+{"status":true,"msg":"获取成功","data":{"url":"http://mpayg.qmbpay.com?orderid=2019111418310540542&total_fee=500.00&sign=9CFF5C46AF6B6CA58634664C5D7DACF6"}}
+{
+  "PaymentSerial": "PT2019111419170000000194",
+  "PaymentStatus": 0,
+  "OrderAmount": 200.0,
+  "PaymentAmount": 200.0,
+  "ServiceType": "WX004",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "20191114191714974852",
+  "OrderID": "7d0d75ad2cc4497baf55987916346374",
+  "OrderDate": "2019-11-14 19:14:40",
+  "Sign": "6EC3CE88EAA147859ED417D2705E2AADF15775C334164201C5B175FE2CE6B6EB",
+  "Status": 0,
+  "Message": null
+} 7:18 PM
+{
+  "PaymentSerial": "PT2019111419170000000194",
+  "PaymentStatus": 0,
+  "OrderAmount": 200.0,
+  "PaymentAmount": 200.0,
+  "ServiceType": "WX004",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "20191114191714974852",
+  "OrderID": "7d0d75ad2cc4497baf55987916346374",
+  "OrderDate": "2019-11-14 19:14:40",
+  "Sign": "6EC3CE88EAA147859ED417D2705E2AADF15775C334164201C5B175FE2CE6B6EB",
+  "Status": 0,
+  "Message": null
+} 7:18 PM
+{
+  "PaymentSerial": "PT2019111419170000000194",
+  "PaymentStatus": 0,
+  "OrderAmount": 200.0,
+  "PaymentAmount": 200.0,
+  "ServiceType": "WX004",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "20191114191714974852",
+  "OrderID": "7d0d75ad2cc4497baf55987916346374",
+  "OrderDate": "2019-11-14 19:14:40",
+  "Sign": "6EC3CE88EAA147859ED417D2705E2AADF15775C334164201C5B175FE2CE6B6EB",
+  "Status": 0,
+  "Message": null
+} 7:18 PM
+{
+  "PaymentSerial": "PT2019111419170000000194",
+  "PaymentStatus": 0,
+  "OrderAmount": 200.0,
+  "PaymentAmount": 200.0,
+  "ServiceType": "WX004",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "20191114191714974852",
+  "OrderID": "7d0d75ad2cc4497baf55987916346374",
+  "OrderDate": "2019-11-14 19:14:40",
+  "Sign": "6EC3CE88EAA147859ED417D2705E2AADF15775C334164201C5B175FE2CE6B6EB",
+  "Status": 0,
+  "Message": null
+} 7:18 PM
+{
+  "PaymentSerial": "PT2019111419170000000194",
+  "PaymentStatus": 0,
+  "OrderAmount": 200.0,
+  "PaymentAmount": 200.0,
+  "ServiceType": "WX004",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "20191114191714974852",
+  "OrderID": "7d0d75ad2cc4497baf55987916346374",
+  "OrderDate": "2019-11-14 19:14:40",
+  "Sign": "6EC3CE88EAA147859ED417D2705E2AADF15775C334164201C5B175FE2CE6B6EB",
+  "Status": 0,
+  "Message": null
+} 7:20 PM
+{"status":false,"msg":"获取失败","data":{"retcode":1,"retmsg":"暂无订单"}}
+{"status":true,"msg":"获取成功","data":{"url":"http://mpayg.qmbpay.com?orderid=2019111419323736099&total_fee=500.00&sign=53B7B86C3FB15EDBC0FDB54D95F6B07E"}}
+{"status":false,"msg":"获取失败","data":"no account!"}

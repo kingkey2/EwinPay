@@ -1,0 +1,18 @@
+﻿{
+  "ProviderCode": "TigerPay",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://test-wm7.andex.cc/dashboard/settlement.php",
+  "QueryOrderUrl": "https://test-wm7.andex.cc/api/settlement_result.php",
+  "QueryBalanceUrl": "",
+  "MerchantCode": "10091",
+  "MerchantKey": "0rmNqM4SQv8",
+  "NotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/TigerPayNotify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://test-wm7.andex.cc/api/MoneyRequest.php",
+  "WithdrawNotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/TigerPayWithdrawNotify",
+  "CallBackUrl": "http://epay.dev4.mts.idv.tw/ResultSuccess.cshtml",
+  "RequestType": 0,
+  "ProviderPublicKey": "566406Maharaja202209",
+  "CurrencyTypeSettings": null,
+  "OtherDatas": [ "674996" ]//公司帳戶ID
+}

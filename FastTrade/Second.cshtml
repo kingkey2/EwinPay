@@ -1,0 +1,146 @@
+﻿@{
+
+    var OrderDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+    var OrderID = Request.Params["OrderID"];
+    var CompanyCode = Request.Params["CompanyCode"];
+    var CurrencyType = Request.Params["CurrencyType"];
+    var ServiceType = Request.Params["ServiceType"];
+    var ClientIP = Request.Params["ClientIP"];
+    var OrderAmount = Request.Params["OrderAmount"];
+    var ServicePaymentType = Request.Params["ServicePaymentType"];
+    var CompanyName = Request.Params["CompanyName"];
+    var ServiceTypeName = Request.Params["ServiceTypeName"];
+    var SelCurrency = Request.Params["SelCurrency"];
+    var AssignAmount = Request.Params["AssignAmount"];
+    var RealName = Request.Params["RealName"];
+    var Sign = Request.Params["Sign"];
+    var redirectAction = "../api/Gate/RequireSimplePayment";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Language" content="zh-tw" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="Description" content="Vpay">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--  Css  -->
+    <link rel="stylesheet" href="/FastTrade/imageAndCss/p1.css" />
+    <title>Vpay</title>
+    <script>
+        var IsClickBth = false;
+        window.onload = function () {
+            document.getElementById("btnSumit").onclick = function () {
+                if (!IsClickBth) {
+                    IsClickBth = true;
+                    var form = document.getElementById("PostForm");
+                    form.submit();
+                }
+            }
+
+            document.getElementById("btnCancel").onclick = function () {
+                window.history.go(-1);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form id="PostForm" name="PostForm" method="post" action="@redirectAction">
+            <div class="cardHeader">
+                <h3><span class="language_replace">Vpay 存款</span></h3>
+                <span class="hr"></span>
+                <p>
+                    <span class="language_replace lighter">存款平台</span>
+                    <span class="language_replace bold">@CompanyName</span>
+                </p>
+                @*<p>
+                    <span class="language_replace lighter">存款帳號</span>
+                    <span class="language_replace bold">99GGININ30CM</span>
+                </p>*@
+            </div>
+            <div class="cardContent">
+                <div class="selectTitle" style="display:none">
+                    <span class="language_replace seqTitle">選擇銀行：</span>
+                </div>
+                <div class="saveMoneyList selectGrayBG" style="display:none">
+                    <select name="BankCode">
+                        <option value="" style="display: none;">請選擇存款銀行</option>
+                        <option value="ABC">中國農業銀行</option>
+                        <option value="ALIPAY">支付寶轉帳銀行卡</option>
+                        <option value="BCCB">北京銀行</option>
+                        <option value="BOC">中國銀行</option>
+                        <option value="BOS">上海銀行</option>
+                        <option value="CCB">中國建設銀行</option>
+                        <option value="CEB">中國光大銀行</option>
+                        <option value="CIB">興業銀行</option>
+                        <option value="CITIC">中信銀行</option>
+                        <option value="CMB">招商銀行</option>
+                        <option value="CMBC">中國民生銀行</option>
+                        <option value="COMM">交通銀行</option>
+                        <option value="GDB">廣發銀行</option>
+                        <option value="HXB">華夏銀行</option>
+                        <option value="ICBC">中國工業銀行</option>
+                        <option value="PSBC">中國郵政儲蓄銀行</option>
+                        <option value="SPDB">浦發銀行</option>
+                        <option value="SZPAB">平安銀行</option>
+                        <option value="WECHAT">微信轉帳銀行卡</option>
+                    </select>
+                </div>
+                <div class="selectTitle">
+                    <span class="language_replace seqTitle">交易日期：</span>
+                </div>
+                <div class="saveMoneyList selectGrayBG">
+                    <span>@OrderDate</span>
+                </div>
+                <div class="selectTitle">
+                    <span class="language_replace seqTitle">交易單號：</span>
+                </div>
+                <div class="saveMoneyList selectGrayBG">
+                    <span>@OrderID</span>
+                </div>
+                <div class="selectTitle">
+                    <span class="language_replace seqTitle">交易金額：</span>
+                </div>
+                <div class="saveMoneyList selectGrayBG">
+                    <span>@(CurrencyType + " " + OrderAmount)</span>
+                </div>
+                <div class="selectTitle">
+                    <span class="language_replace seqTitle">支付方式：</span>
+                </div>
+                <div class="saveMoneyList selectGrayBG">
+                    <span class="language_replace">@ServiceTypeName</span>
+                </div>
+            </div>
+            <div class="standardBTN main" id="btnSumit"><span class="language_replace">確認</span></div>
+            <div class="standardBTN normal" id="btnCancel"><span class="language_replace">上一步</span></div>
+            <div id="otherDiv" style="display:none">
+                <input type="text" name="CompanyCode" value="@CompanyCode" style="width:80%;" />
+                <input type="text" name="CurrencyType" value="@CurrencyType" style="width:80%;" />
+                <input type="text" name="ServiceType" value="@ServiceType" style="width:80%;" />
+                <input type="text" name="ClientIP" value="@ClientIP" style="width:80%;" />
+                <input type="text" name="OrderID" value="@OrderID" style="width:80%;" />
+                <input type="text" name="OrderDate" value="@OrderDate" style="width:80%;" />
+                <input type="text" name="OrderAmount" value="@OrderAmount" style="width:80%;" />
+                <input type="text" name="SelCurrency" value="@SelCurrency" style="width:80%;" />
+                <input type="text" name="AssignAmount" value="@AssignAmount" style="width:80%;" />
+                <input type="text" name="UserName" value="@RealName" style="width:80%;" />
+                <input type="text" name="Sign" value="@Sign" style="width:80%;" />
+            </div>
+        </form>
+    </div>
+</body>
+
+
+
+
+</html>

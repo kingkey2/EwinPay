@@ -1,0 +1,469 @@
+﻿{
+  "BankCodeSettings": [
+    {
+      "BankName": "三井住友銀行",
+      "BankCode": 1,
+      "Nissin": "0009",
+      "coolemons": "SMBC",
+      "HeroPay": "JPT0009"
+    },
+    {
+      "BankName": "みずほ銀行",
+      "BankCode": 2,
+      "Nissin": "0001",
+      "coolemons": "MHBK",
+      "HeroPay": "JPT0005"
+    },
+    {
+      "BankName": "三菱UFJ銀行",
+      "BankCode": 4,
+      "Nissin": "0005",
+      "coolemons": "UFJ",
+      "HeroPay": "JPT0005"
+    },
+    {
+      "BankName": "りそな銀行",
+      "BankCode": 5,
+      "Nissin": "0010",
+      "coolemons": "DIWA",
+      "HeroPay": "JPT0010"
+    },
+    {
+      "BankName": "埼玉りそな銀行",
+      "BankCode": 6,
+      "Nissin": "0017",
+      "coolemons": "SAIB",
+      "HeroPay": "JPT0017"
+    },
+    {
+      "BankName": "ゆうちょ銀行",
+      "BankCode": 7,
+      "Nissin": "9900",
+      "coolemons": "JPPS",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "PayPay銀行",
+      "BankCode": 8,
+      "Nissin": "0033",
+      "coolemons": -1,
+      "HeroPay": "JPT0033"
+    },
+    {
+      "BankName": "ソニー銀行",
+      "BankCode": 10,
+      "Nissin": "0035",
+      "coolemons": "SONY",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "楽天銀行",
+      "BankCode": 11,
+      "Nissin": "0036",
+      "coolemons": "RAKT",
+      "HeroPay": "JPT0036"
+    },
+
+    {
+      "BankName": "住信SBIネット銀行",
+      "BankCode": 13,
+      "Nissin": "0038",
+      "coolemons": "NTSS",
+      "HeroPay": "JPT0038"
+    },
+    {
+      "BankName": "auじぶん銀行",
+      "BankCode": 14,
+      "Nissin": "0039",
+      "coolemons": "JICR",
+      "HeroPay": -1
+    },
+
+    {
+      "BankName": "大和ネクスト銀行",
+      "BankCode": 16,
+      "Nissin": "0041",
+      "coolemons": "DNEX",
+      "HeroPay": -1
+    },
+
+    {
+      "BankName": "GMOあおぞらネット銀行",
+      "BankCode": 18,
+      "Nissin": "0310",
+      "coolemons": -1,
+      "HeroPay": "JPT0398"
+    },
+    {
+      "BankName": "沖縄銀行",
+      "BankCode": 19,
+      "Nissin": "0188",
+      "coolemons": "BOKI",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "山陰合同銀行",
+      "BankCode": 20,
+      "Nissin": "0167",
+      "coolemons": "SGBK",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "常陽銀行",
+      "BankCode": 21,
+      "Nissin": "0130",
+      "coolemons": "JOYO",
+      "HeroPay": "JPT0130"
+    },
+    {
+      "BankName": "SBJ銀行",
+      "BankCode": 22,
+      "Nissin": "0472",
+      "coolemons": "SHBK",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "足利銀行",
+      "BankCode": 24,
+      "Nissin": "0129",
+      "coolemons": "ASIK",
+      "HeroPay": "JPT0129"
+    },
+    {
+      "BankName": "中国銀行",
+      "BankCode": 25,
+      "Nissin": "0168",
+      "coolemons": "CHGK",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "群馬銀行",
+      "BankCode": 26,
+      "Nissin": "0128",
+      "coolemons": "GB",
+      "HeroPay": "JPT0128"
+    },
+    {
+      "BankName": "山口銀行",
+      "BankCode": 28,
+      "Nissin": "0170",
+      "coolemons": "YMBK",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "福岡銀行",
+      "BankCode": 29,
+      "Nissin": "0177",
+      "coolemons": "FKBK",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "宮崎銀行",
+      "BankCode": 30,
+      "Nissin": "0184",
+      "coolemons": "MIYA",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "西日本シティ銀行",
+      "BankCode": 31,
+      "Nissin": "0190",
+      "coolemons": "NISI",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "肥後銀行",
+      "BankCode": 32,
+      "Nissin": "0182",
+      "coolemons": "HIGO",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "百十四銀行",
+      "BankCode": 34,
+      "Nissin": "0173",
+      "coolemons": "HYAK",
+      "HeroPay": -1
+    },
+
+
+
+    {
+      "BankName": "北國銀行",
+      "BankCode": 38,
+      "Nissin": "0146",
+      "coolemons": "HKOK",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "千葉銀行",
+      "BankCode": 39,
+      "Nissin": "0134",
+      "coolemons": "CHBA",
+      "HeroPay": "JPT0134"
+    },
+    {
+      "BankName": "佐賀銀行",
+      "BankCode": 40,
+      "Nissin": "0179",
+      "coolemons": "BKSG",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "大分銀行",
+      "BankCode": 41,
+      "Nissin": "0183",
+      "coolemons": "OITA",
+      "HeroPay": -1
+    },
+
+
+    {
+      "BankName": "八十二銀行",
+      "BankCode": 44,
+      "Nissin": "0143",
+      "coolemons": "HABK",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "大垣共立銀行",
+      "BankCode": 45,
+      "Nissin": "0152",
+      "coolemons": "OGAK",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "福井銀行",
+      "BankCode": 49,
+      "Nissin": "0147",
+      "coolemons": "FKUI",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "新生銀行",
+      "BankCode": 51,
+      "Nissin": "0397",
+      "coolemons": "LTCB",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "スルガ銀行",
+      "BankCode": 52,
+      "Nissin": "0150",
+      "coolemons": "SRFX",
+      "HeroPay": -1
+    },
+
+    {
+      "BankName": "静岡銀行",
+      "BankCode": 54,
+      "Nissin": "0149",
+      "coolemons": "SHIZ",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "横浜銀行",
+      "BankCode": 55,
+      "Nissin": "0138",
+      "coolemons": "HAMA",
+      "HeroPay": "JPT0138"
+    },
+    {
+      "BankName": "広島銀行",
+      "BankCode": 56,
+      "Nissin": "0169",
+      "coolemons": "HIRO",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "七十七銀行",
+      "BankCode": 60,
+      "Nissin": "0125",
+      "coolemons": "BOSS",
+      "HeroPay": "JPT0125"
+    },
+    {
+      "BankName": "荘内銀行",
+      "BankCode": 62,
+      "Nissin": "0121",
+      "coolemons": "SNAI",
+      "HeroPay": "JPT0121"
+    },
+    {
+      "BankName": "十六銀行",
+      "BankCode": 63,
+      "Nissin": "0153",
+      "coolemons": "JURO",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "山形銀行",
+      "BankCode": 64,
+      "Nissin": "0122",
+      "coolemons": "YAMB",
+      "HeroPay": "JPT0122"
+    },
+
+    {
+      "BankName": "紀陽銀行",
+      "BankCode": 66,
+      "Nissin": "0163",
+      "coolemons": "KIYO",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "鹿児島銀行",
+      "BankCode": 70,
+      "Nissin": "0185",
+      "coolemons": "KAGO",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "南都銀行",
+      "BankCode": 71,
+      "Nissin": "0162",
+      "coolemons": "NANT",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "北海道銀行",
+      "BankCode": 74,
+      "Nissin": "0116",
+      "coolemons": "HKDB",
+      "HeroPay": "JPT0116"
+    },
+    {
+      "BankName": "山梨中央銀行",
+      "BankCode": 75,
+      "Nissin": "0142",
+      "coolemons": "YCBS",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "滋賀銀行",
+      "BankCode": 76,
+      "Nissin": "0157",
+      "coolemons": "SIGA",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "京都銀行",
+      "BankCode": 78,
+      "Nissin": "0158",
+      "coolemons": "BOKF",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "みちのく銀行",
+      "BankCode": 79,
+      "Nissin": "0118",
+      "coolemons": "MCHI",
+      "HeroPay": "JPT0118"
+    },
+    {
+      "BankName": "あおぞら銀行",
+      "BankCode": 84,
+      "Nissin": "0398",
+      "coolemons": "NCBT",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "池田泉州銀行",
+      "BankCode": 88,
+      "Nissin": "0161",
+      "coolemons": "BIKE",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "北都銀行",
+      "BankCode": 89,
+      "Nissin": "0120",
+      "coolemons": "HOKB",
+      "HeroPay": "JPT0120"
+    },
+    {
+      "BankName": "琉球銀行",
+      "BankCode": 90,
+      "Nissin": "0187",
+      "coolemons": "RYUB",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "北陸銀行",
+      "BankCode": 91,
+      "Nissin": "0144",
+      "coolemons": "RIKB",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "秋田銀行",
+      "BankCode": 92,
+      "Nissin": "0119",
+      "coolemons": "AKIT",
+      "HeroPay": "JPT0119"
+    },
+    {
+      "BankName": "四国銀行",
+      "BankCode": 93,
+      "Nissin": "0175",
+      "coolemons": "SIKO",
+      "HeroPay": -1
+    },
+    {
+      "BankName": "第四北越銀行",
+      "BankCode": 95,
+      "Nissin": "0140",
+      "coolemons": -1,
+      "HeroPay": "JPT0140"
+    },
+    {
+      "BankName": "筑波銀行",
+      "BankCode": 97,
+      "Nissin": "0131",
+      "coolemons": "KGBK",
+      "HeroPay": "JPT0131"
+    },
+    {
+      "BankName": "岩手銀行",
+      "BankCode": 98,
+      "Nissin": -1,
+      "coolemons": -1,
+      "HeroPay": "JPT0123"
+    },
+    {
+      "BankName": "東北銀行",
+      "BankCode": 98,
+      "Nissin": -1,
+      "coolemons": -1,
+      "HeroPay": "JPT0124"
+    },
+    {
+      "BankName": "東邦銀行",
+      "BankCode": 98,
+      "Nissin": -1,
+      "coolemons": -1,
+      "HeroPay": "JPT0126"
+    },
+    {
+      "BankName": "武蔵野銀行",
+      "BankCode": 98,
+      "Nissin": -1,
+      "coolemons": -1,
+      "HeroPay": "JPT0133"
+    },
+    {
+      "BankName": "千葉興業銀行",
+      "BankCode": 98,
+      "Nissin": -1,
+      "coolemons": -1,
+      "HeroPay": "JPT0135"
+    },
+    {
+      "BankName": "東京都民銀行",
+      "BankCode": 98,
+      "Nissin": -1,
+      "coolemons": -1,
+      "HeroPay": "JPT0137"
+    }
+  ]
+}

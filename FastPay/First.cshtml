@@ -1,0 +1,519 @@
+﻿@{
+    //var orderID = Guid.NewGuid().ToString("N");
+    var CompanyCode = Request.Params["CompanyCode"];
+    var strSelCurrency = Request.Params["SelCurrency"];
+    var OrderID = Request.Params["OrderID"];
+    var callBackUrl = Request.Params["callBackUrl"];
+    var ClientIP = Request.Params["ClientIP"];
+
+    //'{"AccountName":"kevin","BankName":"k銀行","BranchName":"k支行","BankNumber":"1122233456","BankProvince":"k省","BankCity":"k市","Amount":"500"}'
+    var BanckCardDetail = Request.Params["BanckCardDetail"];
+    BanckCardDetail = Server.UrlDecode(BanckCardDetail);
+
+    var redirectAction = "../api/Gate/RequireSimpleWithdrawal";
+
+    System.Data.DataTable DT;
+    string CompanyKey;
+    int companyID;
+    int WithdrawType;
+    GatewayCommon.WithdrawLimit CompanyWithdrawLimitModel;
+    List<GatewayCommon.WithdrawLimit> LstCompanyWithdrawLimitModel;
+    GatewayCommon.Company CompanyModel;
+    string companyName = null;
+    List<string> canUseCurrency = new List<string>(); ;
+    List<Tuple<int, int, string, string, string>> canUseServices = new List<Tuple<int, int, string, string, string>>();
+    var clientIP = Request.UserHostAddress;
+    Newtonsoft.Json.Linq.JArray ServiceDatailList = new Newtonsoft.Json.Linq.JArray();
+    string Currency;
+    IList<GatewayCommon.GPayWithdrawRelation> GPayWithdrawRelationModels;
+    GatewayCommon.GPayWithdrawRelation GPayWithdrawRelationModel;
+    //供应商相关
+    GatewayCommon.WithdrawLimit withdrawLimitModel = null;
+    GatewayCommon.Provider provider = null;
+    /*
+     201 => 未傳入公司資料
+     202 => 缺少公司資料
+     203 => 缺少幣別
+     204 => 缺少OrderID
+     205 => 缺少callBackUrl
+     206 => 缺少ClientIP
+     207 => 尚未設定限額
+     208 => 对应不到设定币别
+     209 => 尚未设定扣款通道
+     210 => 尚未设定供应商限额
+     211 => 尚未设定指定供应商
+     212 => 通道维护中
+     */
+
+    //if (string.IsNullOrEmpty(Sign)) {
+    //    Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=201");
+    //}
+
+    if (!string.IsNullOrEmpty(ClientIP))
+    {
+        if (!string.IsNullOrEmpty(callBackUrl))
+        {
+            if (!string.IsNullOrEmpty(OrderID))
+            {
+                if (!string.IsNullOrEmpty(strSelCurrency))
+                {
+
+                    if (!string.IsNullOrEmpty(CompanyCode))
+                    {
+
+                        DT = PayDB.GetCompanyByCode(CompanyCode, false);
+
+                        if ((DT != null && DT.Rows.Count > 0))
+                        {
+                            CompanyModel = GatewayCommon.ToList<GatewayCommon.Company>(DT).FirstOrDefault();
+
+                            companyID = CompanyModel.CompanyID;
+                            companyName = CompanyModel.CompanyName;
+                            CompanyKey = CompanyModel.CompanyKey;
+                            WithdrawType = CompanyModel.WithdrawType;
+
+                            DT = PayDB.GetCompanyPointByID(companyID);
+                            for (int i = 0; i < DT.Rows.Count; i++)
+                            {
+                                canUseCurrency.Add(DT.Rows[i]["CurrencyType"].ToString());
+                            }
+
+                            List<string> selCurrency = strSelCurrency.Split(',').ToList();
+
+                            canUseCurrency = selCurrency.Intersect(canUseCurrency).ToList();
+
+                            if (selCurrency.Count == 0)
+                            {
+                                Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=208");
+                            }
+
+                            #region 公司限額檢查
+
+                            if (WithdrawType == 1)
+                            {//自动代付
+                                DT = RedisCache.CompanyWithdrawLimit.GetCompanyAPIWithdrawLimit(companyID, canUseCurrency.FirstOrDefault());
+
+                                if (!(DT != null && DT.Rows.Count > 0))
+                                {
+                                    Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=207");
+                                }
+
+                                CompanyWithdrawLimitModel = GatewayCommon.ToList<GatewayCommon.WithdrawLimit>(DT).FirstOrDefault();
+                            }
+                            else
+                            {//后台审核
+                                DT = RedisCache.CompanyWithdrawLimit.GetCompanyBackendtWithdrawLimit(companyID, canUseCurrency.FirstOrDefault());
+
+                                if (!(DT != null && DT.Rows.Count > 0))
+                                {
+                                    Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=207");
+                                }
+
+                                LstCompanyWithdrawLimitModel = GatewayCommon.ToList<GatewayCommon.WithdrawLimit>(DT).ToList();
+                                decimal tmpMaxLimit = LstCompanyWithdrawLimitModel.First().MaxLimit;
+                                decimal tmpMinLimit = LstCompanyWithdrawLimitModel.First().MinLimit;
+                                decimal tmpCharge = LstCompanyWithdrawLimitModel.First().Charge;
+                                for (int i = 0; i < LstCompanyWithdrawLimitModel.Count; i++)
+                                {
+                                    if (LstCompanyWithdrawLimitModel[i].MaxLimit > tmpMaxLimit)
+                                    {
+                                        tmpMaxLimit = LstCompanyWithdrawLimitModel[i].MaxLimit;
+                                    }
+
+                                    if (LstCompanyWithdrawLimitModel[i].MinLimit < tmpMinLimit)
+                                    {
+                                        tmpMinLimit = LstCompanyWithdrawLimitModel[i].MinLimit;
+                                    }
+
+                                    if (LstCompanyWithdrawLimitModel[i].Charge > tmpCharge)
+                                    {
+                                        tmpCharge = LstCompanyWithdrawLimitModel[i].Charge;
+                                    }
+                                }
+
+                                CompanyWithdrawLimitModel = new GatewayCommon.WithdrawLimit()
+                                {
+                                    MaxLimit = tmpMaxLimit,
+                                    MinLimit = tmpMinLimit,
+                                    Charge = tmpCharge
+                                };
+                            }
+
+                            var serviceData = new Newtonsoft.Json.Linq.JObject(
+                              new Newtonsoft.Json.Linq.JProperty("MaxOnceAmount", (decimal)CompanyWithdrawLimitModel.MaxLimit),
+                              new Newtonsoft.Json.Linq.JProperty("MinOnceAmount", (decimal)CompanyWithdrawLimitModel.MinLimit),
+                              new Newtonsoft.Json.Linq.JProperty("CurrencyType", (string)canUseCurrency.FirstOrDefault()));
+
+                            ServiceDatailList.Add(serviceData);
+
+                            Currency = canUseCurrency.FirstOrDefault();
+                            #endregion
+
+
+                            #region 扣款通道检查
+                            if (CompanyModel.WithdrawType == 1)
+                            {
+                                if (string.IsNullOrEmpty(CompanyModel.AutoWithdrawalServiceType))
+                                {
+                                    Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=209");
+                                }
+
+                                #region 設定的供應商
+
+                                DT = RedisCache.GPayWithdrawRelation.GetGPayWithdrawRelation(CompanyModel.CompanyID, Currency);
+
+                                if (!(DT != null && DT.Rows.Count > 0))
+                                {
+                                    Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=210");
+                                }
+
+                                GPayWithdrawRelationModels = GatewayCommon.ToList<GatewayCommon.GPayWithdrawRelation>(DT);
+
+                                #endregion
+
+                                #region 供應商Limit檢查
+                                GPayWithdrawRelationModel = GPayWithdrawRelationModels.First();
+
+                                //DT = PayDB.GetProviderServiceByProviderServiceType(model.ProviderCode, body.ServiceType, body.CurrencyType, false);
+                                DT = RedisCache.ProviderWithdrawLimit.GetProviderAPIWithdrawLimit(GPayWithdrawRelationModel.ProviderCode, Currency);
+                                if (DT != null && DT.Rows.Count > 0)
+                                {
+                                    withdrawLimitModel = GatewayCommon.ToList<GatewayCommon.WithdrawLimit>(DT).FirstOrDefault();
+                                }
+                                else
+                                {
+                                    withdrawLimitModel = null;
+                                }
+
+                                DT = RedisCache.ProviderCode.GetProviderCode(GPayWithdrawRelationModel.ProviderCode);
+
+                                if (DT != null && DT.Rows.Count > 0)
+                                {
+                                    provider = GatewayCommon.ToList<GatewayCommon.Provider>(DT).FirstOrDefault();
+                                }
+                                else
+                                {
+                                    provider = null;
+                                }
+
+
+                                if (withdrawLimitModel == null || provider == null)
+                                {
+
+                                    Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=211");
+
+                                }
+
+                                #endregion
+
+                                #region 檢查供應商的是否启用
+                                if (provider.ProviderState == 1)
+                                {
+                                    Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=212");
+                                }
+
+                                #endregion
+
+                                #region 檢查供應商的是否開啟代付功能
+                                if (!(((GatewayCommon.ProviderAPIType)provider.ProviderAPIType & GatewayCommon.ProviderAPIType.Withdraw) == GatewayCommon.ProviderAPIType.Withdraw))
+                                {
+                                    Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=212");
+                                }
+
+                                #endregion
+                            }
+
+                            #endregion
+
+                            ////簽名檢查
+                            ////Check Sign
+                            //string signStr = "CompanyCode=" + CompanyCode;
+                            //signStr += "&CurrencyType=" + CurrencyType;
+                            //signStr += "&ServiceType=" + ServiceType;
+                            //signStr += "&CompanyKey=" + CompanyKey;
+
+                            //if (CodingControl.GetSHA256(signStr, false).ToUpper() != Sign.ToUpper()) {
+                            //    //Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=204");//簽名錯誤
+                            //}
+
+                        }
+                        else
+                        {
+                            Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=202");
+                        }
+                    }
+                    else
+                    {
+                        Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=201");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=203");
+                }
+            }
+            else
+            {
+                Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=204");
+            }
+        }
+        else
+        {
+            Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=205");
+        }
+    }
+    else
+    {
+        Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=206");
+    }
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Language" content="zh-tw" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="Description" content="eWin Gaming">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--  Css  -->
+    <link rel="stylesheet" href="/FastPay/imageAndCss/p1.css" />
+    <title>Vpay</title>
+    <script>
+        var nowCurrency = '@canUseCurrency.FirstOrDefault()';
+        var nowService = null;
+        var serviceDataList = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ServiceDatailList));
+        var BanckCardDetail = "@BanckCardDetail";
+        var IsClickBth = false;
+         function selectCurrency(currency , dom) {
+            var parDiv = document.getElementById("selCurrency");
+            var input = document.getElementById("inputCurrency");
+            var span = document.getElementById("spanCurrency");
+            var target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+            input.value = currency;
+            span.innerHTML = currency;
+            nowCurrency = currency;
+            for (var i = 0; i < parDiv.children.length; i++) {
+                parDiv.children[i].classList.remove("active")
+            }
+
+            dom.classList.add("active");
+
+        }
+
+        window.onload = function () {
+            //沒有傳入銀行卡資訊
+            if (BanckCardDetail == undefined || BanckCardDetail == "") {
+
+            } else {
+                var checkInput;
+                var BanckCardDetails = JSON.parse(BanckCardDetail.replace(/&quot;/g, '"'));
+
+                //银行名称
+                checkInput = document.getElementById("inputBankName");
+                checkInput.value = BanckCardDetails.BankName;
+                //银行卡号
+                checkInput = document.getElementById("inputBankCard");
+                checkInput.value = BanckCardDetails.BankNumber;
+                //账户名称
+                checkInput = document.getElementById("inputBankCardName");
+                checkInput.value = BanckCardDetails.AccountName;
+                //支行名称
+                checkInput = document.getElementById("inputBankBranchName");
+                checkInput.value = BanckCardDetails.BranchName;
+                //省份
+                checkInput = document.getElementById("inputOwnProvince");
+                checkInput.value = BanckCardDetails.BankProvince;
+                //城市
+                checkInput = document.getElementById("inputOwnCity");
+                checkInput.value = BanckCardDetails.BankCity;
+                //金額
+                //checkInput = document.getElementById("inputAmount");
+                //checkInput.value = BanckCardDetails.Amount;
+            }
+
+            for (var i = 0; i < serviceDataList.length; i++) {
+                if (serviceDataList[i].CurrencyType == nowCurrency) {
+                    document.getElementById("spanMaxLimit").innerText = serviceDataList[i].MaxOnceAmount;
+                    document.getElementById("spanMinLimit").innerText = serviceDataList[i].MinOnceAmount;
+
+                    break;
+                }
+            }
+
+            document.getElementById("btnSumit").onclick = function () {
+                btnSubmit();
+            }
+
+            document.getElementById("btnCancel").onclick = function () {
+                window.history.go(-1);
+            }
+        }
+
+        function btnSubmit() {
+            var checkInput;
+            //是否有選取支付方式
+            checkInput = document.getElementById("inputBankName");
+            if (!(checkInput && checkInput.value && checkInput.value != "")) {
+                alert("尚未填寫銀行名稱");
+                return;
+            }
+            checkInput = document.getElementById("inputBankCard");
+            if (!(checkInput && checkInput.value && checkInput.value != "")) {
+                alert("尚未填寫卡號");
+                return;
+            }
+            checkInput = document.getElementById("inputBankCardName");
+            if (!(checkInput && checkInput.value && checkInput.value != "")) {
+                alert("尚未填寫持卡人姓名");
+                return;
+            }
+            checkInput = document.getElementById("inputBankBranchName");
+            if (!(checkInput && checkInput.value && checkInput.value != "")) {
+                alert("尚未填寫支行名稱");
+                return;
+            }
+            checkInput = document.getElementById("inputOwnProvince");
+            if (!(checkInput && checkInput.value && checkInput.value != "")) {
+                alert("尚未填寫省份");
+                return;
+            }
+            checkInput = document.getElementById("inputOwnCity");
+            if (!(checkInput && checkInput.value && checkInput.value != "")) {
+                alert("尚未填寫城市");
+                return;
+            }
+
+            checkInput = document.getElementById("inputAmount");
+            if ((checkInput && checkInput.value && checkInput.value != "")) {
+                var checkAmount = Number(checkInput.value);
+
+                if (!(checkAmount > 0)) {
+                    alert("金額不得小於0");
+                    return;
+                } else {
+                    for (var i = 0; i < serviceDataList.length; i++) {
+                        if (serviceDataList[i].CurrencyType == nowCurrency) {
+                            if (checkAmount > serviceDataList[i].MaxOnceAmount || checkAmount < serviceDataList[i].MinOnceAmount) {
+                                alert("限額有誤");
+                                return;
+                            }
+                            break;
+                        }
+                    }
+                }
+            } else {
+                alert("尚未填寫金額");
+                return;
+            }
+            if (!IsClickBth) {
+                IsClickBth = true;
+                var form = document.getElementById("PostForm");
+                form.submit();
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <form id="PostForm" name="PostForm" method="post" action="@redirectAction">
+        <div class="container">
+            <div class="cardHeader">
+                <h3><span class="language_replace">快速付款</span></h3>
+                <span class="hr"></span>
+                <p>
+                    <span class="language_replace lighter">付款平台:</span>
+                    <span class="language_replace bold">@companyName</span>
+                </p>
+                @*最後要隱藏*@
+                @*<p>
+                        <span class="language_replace lighter">存款帳號:</span>
+                        <span class="language_replace bold">@companyCode</span>
+                    </p>*@
+            </div>
+            <div class="cardContent">
+                <div class="selectMoney">
+                    <div class="selectTitle">
+                        <span class="titleNumber">1</span>
+                        <span class="language_replace seqTitle">選擇幣別：</span>
+                    </div>
+                    <div id="selCurrency" class="selectGrayBG">
+                        @{
+                            for (int i = 0; i < canUseCurrency.Count; i++)
+                            {
+                                if (i == 0)
+                                {
+                                    <div class="selectMoneyBTN active" onclick="selectCurrency('@canUseCurrency[i]',this)">
+                                        <span class="money">@canUseCurrency[i]</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="selectMoneyBTN" onclick="selectCurrency('@canUseCurrency[i]',this)">
+                                        <span class="money">@canUseCurrency[i]</span>
+                                    </div>
+                                }
+                            }
+                        }
+                    </div>
+                    <div class="inputInfo">
+                        <div class="selectTitle">
+                            <span class="titleNumber">2</span>
+                            <span class="language_replace seqTitle">輸入提款資訊</span>
+                        </div>
+                        <div class="selectGrayBG">
+                            <input class="selectGrayBG_input" id="inputBankCardName" placeholder="账户名称" language_replace="placeholder" type="text" name="BankCardName" /><br />
+                            <input class="selectGrayBG_input" id="inputBankName" placeholder="银行名称" language_replace="placeholder" type="text" name="BankName" /><br />
+                            <input class="selectGrayBG_input" id="inputBankCard" placeholder="银行卡号" language_replace="placeholder" type="text" name="BankCard" /><br />
+                            <input class="selectGrayBG_input" id="inputBankBranchName" placeholder="支行名称" language_replace="placeholder" type="text" name="BankBranchName" /><br />
+                            <input class="selectGrayBG_input" id="inputOwnProvince" placeholder="省份" language_replace="placeholder" type="text" name="OwnProvince" /><br />
+                            <input class="selectGrayBG_input" id="inputOwnCity" placeholder="城市" language_replace="placeholder" type="text" name="OwnCity" />
+                        </div>
+                    </div>
+                    <div class="inputMoney">
+                        <div class="selectTitle">
+                            <span class="titleNumber">3</span>
+                            <span class="language_replace seqTitle">出款金額：</span>
+                            <div class="seqLimitRow">
+                                <span class="language_replace seqLimitText">出款金額限制：</span>
+                                <span id="spanMinLimit" class="language_replace seqLimitMin">500</span>
+                                <span> - </span>
+                                <span id="spanMaxLimit" class="language_replace seqLimitMax">20,000</span>
+                            </div>
+                        </div>
+                        <div class="selectGrayBG">
+                            <input id="inputAmount" type="number" name="OrderAmount" placeholder="0" />
+                            <span id="spanCurrency" class="inputMoneyCategory">@canUseCurrency.FirstOrDefault()</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="otherDiv" style="display:none">
+                    <input type="text" name="CompanyCode" value="@CompanyCode" style="width:80%;" />
+                    <input id="inputCurrency" type="text" name="CurrencyType" value="@canUseCurrency.FirstOrDefault()" style="width:80%;" />
+                    <input id="inputOrderID" type="text" name="OrderID" value="@OrderID" style="width:80%;" />
+                    <input type="text" name="ClientIP" value="@ClientIP" style="width:80%;" />
+
+                    <input type="text" name="CompanyName" value="@companyName" style="width:80%;" />
+                    <input id="inputServicePaymentType" type="text" name="ServicePaymentType" value="" style="width:80%;" />
+                    <input id="inputServiceTypeName" type="text" name="ServiceTypeName" value="" style="width:80%;" />
+                    <input type="text" name="ReturnUrl" value="@callBackUrl" style="width:80%;" />
+                </div>
+
+                <div class="standardBTN main" id="btnSumit"><span class="language_replace">確認</span></div>
+                <div class="standardBTN normal" id="btnCancel"><span class="language_replace">取消</span></div>
+            </div>
+
+    </form>
+</body>
+</html>

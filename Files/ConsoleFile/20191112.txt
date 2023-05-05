@@ -1,0 +1,136 @@
+{"PaymentID":737,"forCompanyID":1,"PaymentSerial":"PT2019111121370000000737","CurrencyType":"CNY","ServiceType":"BK001","BankCode":"ABC","ProviderCode":"FBDPay","ProcessStatus":4,"ReturnURL":"http://gpay.dev4.mts.idv.tw/api/ProviderResult/TestReturnTwo","State":"testData=20","BankSequenceID":"","ClientIP":"112.121.69.20","OrderID":"d5ef2a7b162a4dc8899ca040d8ff0a9c","OrderDate":"2019-11-11T21:37:10","OrderAmount":1.0000,"PaymentAmount":0.9880,"CreateDate":"2019-11-11T21:37:31","CostRate":1.2000,"CostCharge":0.0000,"CollectRate":1.2000,"CollectCharge":0.0000,"ProviderOrderID":"PC20191111213733730026212","Accounting":0,"PartialOrderAmount":1.0000}
+ProcessStatus=4
+{"PaymentID":737,"forCompanyID":1,"PaymentSerial":"PT2019111121370000000737","CurrencyType":"CNY","ServiceType":"BK001","BankCode":"ABC","ProviderCode":"FBDPay","ProcessStatus":4,"ReturnURL":"http://gpay.dev4.mts.idv.tw/api/ProviderResult/TestReturnTwo","State":"testData=20","BankSequenceID":"","ClientIP":"112.121.69.20","OrderID":"d5ef2a7b162a4dc8899ca040d8ff0a9c","OrderDate":"2019-11-11T21:37:10","OrderAmount":1.0000,"PaymentAmount":0.9880,"CreateDate":"2019-11-11T21:37:31","CostRate":1.2000,"CostCharge":0.0000,"CollectRate":1.2000,"CollectCharge":0.0000,"ProviderOrderID":"PC20191111213733730026212","Accounting":0,"PartialOrderAmount":1.0000}
+ProcessStatus=4
+True
+此流程無法補單
+{"PaymentID":737,"forCompanyID":1,"PaymentSerial":"PT2019111121370000000737","CurrencyType":"CNY","ServiceType":"BK001","BankCode":"ABC","ProviderCode":"FBDPay","ProcessStatus":4,"ReturnURL":"http://gpay.dev4.mts.idv.tw/api/ProviderResult/TestReturnTwo","State":"testData=20","BankSequenceID":"","ClientIP":"112.121.69.20","OrderID":"d5ef2a7b162a4dc8899ca040d8ff0a9c","OrderDate":"2019-11-11T21:37:10","OrderAmount":1.0000,"PaymentAmount":0.9880,"CreateDate":"2019-11-11T21:37:31","CostRate":1.2000,"CostCharge":0.0000,"CollectRate":1.2000,"CollectCharge":0.0000,"ProviderOrderID":"PC20191111213733730026212","Accounting":0,"PartialOrderAmount":1.0000}
+ProcessStatus=4
+True
+此流程無法補單
+{"Status":3,"Message":"此流程無法補單"}
+{"PaymentID":737,"forCompanyID":1,"PaymentSerial":"PT2019111121370000000737","CurrencyType":"CNY","ServiceType":"BK001","BankCode":"ABC","ProviderCode":"FBDPay","ProcessStatus":4,"ReturnURL":"http://gpay.dev4.mts.idv.tw/api/ProviderResult/TestReturnTwo","State":"testData=20","BankSequenceID":"","ClientIP":"112.121.69.20","OrderID":"d5ef2a7b162a4dc8899ca040d8ff0a9c","OrderDate":"2019-11-11T21:37:10","OrderAmount":1.0000,"PaymentAmount":0.9880,"CreateDate":"2019-11-11T21:37:31","CostRate":1.2000,"CostCharge":0.0000,"CollectRate":1.2000,"CollectCharge":0.0000,"ProviderOrderID":"PC20191111213733730026212","Accounting":0,"PartialOrderAmount":1.0000}
+ProcessStatus=4
+True
+此流程無法補單
+{"Status":3,"Message":"此流程無法補單"}
+{
+  "PaymentSerial": "PT2019111121370000000737",
+  "PaymentStatus": 0,
+  "OrderAmount": 1.0,
+  "PaymentAmount": 1.0,
+  "ServiceType": "BK001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "",
+  "OrderID": "d5ef2a7b162a4dc8899ca040d8ff0a9c",
+  "OrderDate": "2019-11-11 21:37:10",
+  "Sign": "51142118AC0721952D3668AC610386CA1B14609733B55F36DF305973BD0A8CFE",
+  "Status": 0,
+  "Message": null
+} 5:22 PM
+{
+  "PaymentSerial": "PT2019111121370000000737",
+  "PaymentStatus": 0,
+  "OrderAmount": 1.0,
+  "PaymentAmount": 1.0,
+  "ServiceType": "BK001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "",
+  "OrderID": "d5ef2a7b162a4dc8899ca040d8ff0a9c",
+  "OrderDate": "2019-11-11 21:37:10",
+  "Sign": "51142118AC0721952D3668AC610386CA1B14609733B55F36DF305973BD0A8CFE",
+  "Status": 0,
+  "Message": null
+} 5:25 PM
+{
+  "PaymentSerial": "PT2019111217410000000740",
+  "PaymentStatus": 0,
+  "OrderAmount": 1.0,
+  "PaymentAmount": 1.0,
+  "ServiceType": "BK001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "",
+  "OrderID": "b0745c9344994ba6b0fd257711532da1",
+  "OrderDate": "2019-11-12 17:41:11",
+  "Sign": "0C7C41FC1B1A932376326DB0B22C28FB8062099BAACC6EAF1D1111EFC779443D",
+  "Status": 0,
+  "Message": null
+} 5:43 PM
+{
+  "PaymentSerial": "PT2019111221000000000166",
+  "PaymentStatus": 0,
+  "OrderAmount": 1.0,
+  "PaymentAmount": 1.0,
+  "ServiceType": "BK001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "",
+  "OrderID": "e62f922d9a194841b46ed6512ecb457b",
+  "OrderDate": "2019-11-12 20:59:58",
+  "Sign": "FBC2C5FD834CD14878AF8F39F2628F0A14CB15D5792CAE2CBD0D3E12345A4F7D",
+  "Status": 0,
+  "Message": null
+} 9:26 PM
+{
+  "PaymentSerial": "PT2019111221190000000167",
+  "PaymentStatus": 0,
+  "OrderAmount": 1.0,
+  "PaymentAmount": 1.0,
+  "ServiceType": "BK001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "",
+  "OrderID": "63c6861ac4d54ce39e669a9b8e730c75",
+  "OrderDate": "2019-11-12 21:19:03",
+  "Sign": "239BEEEA5683C89E431064C21D8B22C4217A75A1D97AB6AA481A8EFFF45B5602",
+  "Status": 0,
+  "Message": null
+} 9:26 PM
+{
+  "PaymentSerial": "PT2019111221000000000166",
+  "PaymentStatus": 0,
+  "OrderAmount": 1.0,
+  "PaymentAmount": 1.0,
+  "ServiceType": "BK001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "",
+  "OrderID": "e62f922d9a194841b46ed6512ecb457b",
+  "OrderDate": "2019-11-12 20:59:58",
+  "Sign": "FBC2C5FD834CD14878AF8F39F2628F0A14CB15D5792CAE2CBD0D3E12345A4F7D",
+  "Status": 0,
+  "Message": null
+} 9:26 PM
+{
+  "PaymentSerial": "PT2019111217410000000740",
+  "PaymentStatus": 0,
+  "OrderAmount": 1.0,
+  "PaymentAmount": 1.0,
+  "ServiceType": "BK001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "",
+  "OrderID": "b0745c9344994ba6b0fd257711532da1",
+  "OrderDate": "2019-11-12 17:41:11",
+  "Sign": "0C7C41FC1B1A932376326DB0B22C28FB8062099BAACC6EAF1D1111EFC779443D",
+  "Status": 0,
+  "Message": null
+} 10:20 PM
+{
+  "PaymentSerial": "PT2019111221560000000168",
+  "PaymentStatus": 0,
+  "OrderAmount": 1.0,
+  "PaymentAmount": 1.0,
+  "ServiceType": "BK001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "",
+  "OrderID": "afc77ad0b4fa406799e226049cef4be9",
+  "OrderDate": "2019-11-12 21:55:52",
+  "Sign": "25B6CBC80CFB934A217738DA2545FEE200354ED2E3B0D77BE9620449B14570C8",
+  "Status": 0,
+  "Message": null
+} 11:38 PM

@@ -1,0 +1,8 @@
+﻿{"status":true,"msg":"获取成功","data":{"url":"http://106.53.34.178:8080/keensting/aliwx/scan/201910181933550001107895"}}
+{"status":false,"msg":"获取失败","data":"{\"Code\":\"2010\",\"Data\":\"\",\"ErrorMsg\":\"不支持该支付金额,详情请咨询服务商\"}"}
+{"status":true,"msg":"获取成功","data":{"url":"http://mpayg.qmbpay.com?orderid=2019101819343605125&total_fee=500.00&sign=FDEDB75718927F0CF5CF0945B391F17A"}}
+{"status":false,"msg":"获取失败","data":"amount not available! merchants use up 3!"}
+{"status":false,"msg":"获取失败","data":"amount not available! merchants use up 3!"}
+{"status":false,"msg":"623产品未开通","data":[]}
+{"status":false,"msg":"623产品未开通","data":[]}
+{"status":false,"msg":"623产品未开通","data":[]}

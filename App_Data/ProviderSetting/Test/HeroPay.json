@@ -1,0 +1,28 @@
+﻿{
+  "ProviderCode": "HeroPay",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://pay-jp.heropays.com/api/pay/create_order",
+  "QueryOrderUrl": "https://mer-jp.heropays.com:3020/api/pay/query_order",
+  "QueryBalanceUrl": "",
+  "MerchantCode": "120",
+  "MerchantKey": "8HXY4N4KWOI0EKETLMCOQQB0NZ4AZ251YCYHM5X0J9WKWFVSMPYGPBEDBA1Z1CHPLGRSLOC5RW3LK6THOS3F5DSWZVLLLJ0TIB0R58KJBZMXCCGLTOJV9NXJM7ZDQLEHH2pgMvp&88400ukv",
+  "NotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/HeroPayNotify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://withdraw-jp.heropays.com/api/trans/create_order",
+  "WithdrawNotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/HeroPayWithdrawNotify",
+  "QueryWithdrawUrl": "https://mer-jp.heropays.com:3030/api/trans/query_order",
+  "CallBackUrl": "http://epay.dev4.mts.idv.tw/ResultSuccess.cshtml",
+  "RequestType": 2,
+  "ProviderPublicKey": "",
+  "ProviderIP": [
+    "47.74.15.172"
+  ],
+  "ServiceSettings": [
+    {
+      "ServiceType": "JOOB06",
+      "TradeType": "1"
+    }
+  ],
+  "CurrencyTypeSettings": null,
+  "OtherDatas": null
+}

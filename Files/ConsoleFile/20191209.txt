@@ -1,0 +1,75 @@
+{
+  "PaymentSerial": "PT2019120915290000000860",
+  "PaymentStatus": 0,
+  "OrderAmount": 300.0,
+  "PaymentAmount": 300.0,
+  "ServiceType": "AP003",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "20191209152900995650gpb6",
+  "OrderID": "3b9de0b356174894983b2dbd5d3720c7",
+  "OrderDate": "2019-12-09 15:28:36",
+  "Sign": "D7E09A52BF1C538F3CEC99858A6D2C86E8B87FA9CE87601CAB961BD437A76516",
+  "Status": 0,
+  "Message": null
+} 3:36 PM
+{
+  "PaymentSerial": "PT2019120915290000000860",
+  "PaymentStatus": 0,
+  "OrderAmount": 300.0,
+  "PaymentAmount": 300.0,
+  "ServiceType": "AP003",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "20191209152900995650gpb6",
+  "OrderID": "3b9de0b356174894983b2dbd5d3720c7",
+  "OrderDate": "2019-12-09 15:28:36",
+  "Sign": "D7E09A52BF1C538F3CEC99858A6D2C86E8B87FA9CE87601CAB961BD437A76516",
+  "Status": 0,
+  "Message": null
+} 3:36 PM
+{
+  "PaymentSerial": "PT2019120915290000000860",
+  "PaymentStatus": 0,
+  "OrderAmount": 300.0,
+  "PaymentAmount": 300.0,
+  "ServiceType": "AP003",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "20191209152900995650gpb6",
+  "OrderID": "3b9de0b356174894983b2dbd5d3720c7",
+  "OrderDate": "2019-12-09 15:28:36",
+  "Sign": "D7E09A52BF1C538F3CEC99858A6D2C86E8B87FA9CE87601CAB961BD437A76516",
+  "Status": 0,
+  "Message": null
+} 3:36 PM
+{
+  "PaymentSerial": "PT2019120915290000000860",
+  "PaymentStatus": 0,
+  "OrderAmount": 300.0,
+  "PaymentAmount": 300.0,
+  "ServiceType": "AP003",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "20191209152900995650gpb6",
+  "OrderID": "3b9de0b356174894983b2dbd5d3720c7",
+  "OrderDate": "2019-12-09 15:28:36",
+  "Sign": "D7E09A52BF1C538F3CEC99858A6D2C86E8B87FA9CE87601CAB961BD437A76516",
+  "Status": 0,
+  "Message": null
+} 3:36 PM
+{
+  "SendType": 1,
+  "WithdrawSerial": "WT2019120919150000000548",
+  "WithdrawStatus": 3,
+  "OrderAmount": 100.0,
+  "WithdrawAmount": 0.0,
+  "WithdrawCharge": 2.0,
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "OrderID": "ade29f19b97b46b099e3cbf5fe2ea33a",
+  "OrderDate": "2019-12-09 19:14:58",
+  "Sign": "FC7EBBF97B544001FE75E925A053F959C9C8F95DF119B44F0DF8E0710B1CF5A4",
+  "Status": 0,
+  "Message": null
+} 7:16 PM

@@ -1,0 +1,339 @@
+@charset "UTF-8";
+.container .cardContent .selectMoney .selectMoneyBTN, .container .cardContent .selectPay .selectTitleBTN {
+  display: inline-block;
+  position: relative;
+  width: calc(100% / 3.3);
+  height: 100%;
+  margin: calc((25% - (100% / 4.5)) / 2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  border: 0;
+  background: #fff;
+  text-align: center;
+}
+
+* {
+  font-family: 微軟正黑體, 微軟雅黑體, Arial;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #f1f1f1;
+}
+
+
+/*.container {
+  width: 90%;
+  margin: 24px auto;
+	max-width: 520px;
+}*/
+
+
+
+.container .cardHeader {
+  /*border-radius: 12px 12px 0 0;*/
+  background: linear-gradient(135deg, #39C2E4, #2E7BC2);
+  padding: 12px;
+  position: relative;
+}
+.container .cardHeader:after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-image: url("decoration2.png");
+  background-repeat: repeat-x;	
+  background-size: 23px 5px;
+}
+.container .cardHeader h3 {
+  margin: 0 0 0 8px;
+  font-weight: bold;
+  color: #fff;
+}
+.container .cardHeader span.hr {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: 10px 0;
+  background-color: #fff;
+}
+.container .cardHeader p {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px;
+  font-size: 14px;
+  color: #fff;
+}
+.container .cardHeader span.lighter {
+  font-weight: lighter;
+}
+.container .cardHeader span.bold {
+  font-weight: bold;
+}
+.container .cardContent {
+  background-color: #fff;
+  padding: 1px 0 16px;
+  border-radius: 0 0 12px 12px;
+}
+.container .cardContent .selectTitle {
+  margin: 18px 24px 10px;
+}
+.container .cardContent .selectTitle .titleNumber {
+  position: relative;
+  color: #FCEE21;
+  font-weight: bold;
+  z-index: 5;
+}
+.container .cardContent .selectTitle .titleNumber:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #4D4D4D;
+  z-index: -1;
+}
+.container .cardContent .selectTitle .seqTitle {
+	font-size: 14px;
+  padding-left: 12px;
+  color: #808080;
+}
+.container .cardContent .selectGrayBG {
+  position: relative;
+  width: 100%;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #e8e8e8, #f7f7f7);
+  font-size: 0;
+  z-index: 1;
+  border-bottom: 1px solid #e5e5e5;
+}
+.container .cardContent .selectGrayBG.saveMoneyList {
+  padding: 12px 36px;
+}
+.container .cardContent .selectGrayBG.saveMoneyList span {
+  color: #666;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+.selectWrapper{
+	position: relative;
+	width: 100%;
+	height: 40px;
+	overflow: hidden;
+	background: #fff;
+	box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+	border-radius: 40px;
+}
+
+.container .cardContent  select {
+  width:100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 12px;
+  margin: 0 auto;
+  border: 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: #009CEA;
+	border-radius: 40px;
+		cursor: pointer;
+  
+}
+
+
+.container .cardContent select:focus {
+  outline: 0;
+}
+.container .cardContent .selectMoney .selectMoneyBTN {
+  padding: 6px 16px;
+  border-radius: 40px;
+	cursor: pointer;
+}
+.container .cardContent .selectMoney .selectMoneyBTN span.money {
+  color: #009CEA;
+  font-size: 12px;
+  padding-left: 4px;
+}
+.container .cardContent .selectMoney .selectMoneyBTN.active {
+  background: linear-gradient(135deg, #39C2E4, #2E7BC2);
+  color: #fff;
+  border: 0;
+  box-shadow: 0 2px 16px rgba(0, 156, 234, 0.5);
+}
+.container .cardContent .selectMoney .selectMoneyBTN.active:before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  width: 16px;
+  height: 16px;
+  background-image: url("icon_select.png");
+  background-size: cover;
+}
+.container .cardContent .selectMoney .selectMoneyBTN.active span.money {
+  color: #fff;
+}
+.container .cardContent .selectMoney .selectMoneyBTN.disabled {
+  background-color: #E6E6E6;
+}
+.container .cardContent .selectMoney .selectMoneyBTN.disabled span.money {
+  color: #ccc;
+}
+.container .cardContent .selectPay .selectTitleBTN {
+  padding: 4px 3px 6px;
+  border-radius: 8px;
+	cursor: pointer;
+}
+.container .cardContent .selectPay .selectTitleBTN .selectPayImg {
+  border-radius: 4px;
+  width: 60%;
+  height: auto;
+}
+.container .cardContent .selectPay .selectTitleBTN .selectPayName {
+  font-size: 14px;
+  color: #808080;
+  letter-spacing: -1px;
+}
+.container .cardContent .selectPay .selectTitleBTN .selectPayWay {
+  background: #4d4d4d;
+  border-radius: 40px;
+  padding: 2px;
+  margin: 5px auto;
+  width: 90%;
+}
+.container .cardContent .selectPay .selectTitleBTN .selectPayWay img {
+  position: relative;
+  top:2px;
+  width: 12px;
+  height: 10px;
+  padding-right: 2px;
+}
+.container .cardContent .selectPay .selectTitleBTN .selectPayWay span {
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: -1px;
+}
+.container .cardContent .selectPay .selectTitleBTN.active:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  background: linear-gradient(135deg, #39C2E4, #2E7BC2);
+  box-shadow: 0 2px 8px rgba(0, 156, 234, 0.5);
+  border-radius: 10px;
+  z-index: -1;
+}
+.container .cardContent .selectPay .selectTitleBTN.active:after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  width: 18px;
+  height: 18px;
+  background-image: url("icon_select_blue.png");
+  background-size: cover;
+}
+.container .cardContent .inputMoney .selectGrayBG {
+  padding: 20px 18px 18px;
+}
+.container .cardContent .inputMoney .selectGrayBG input[type=number] {
+  width: 100%;
+  padding-right: 24px;
+  color: #009CEA;
+  font-size: 40px;
+  text-align: right;
+  border: 0;
+  border-bottom: 1px solid #aaa;
+  background: none;
+  transition: 0.3s all;
+	border-radius: 0px;
+}
+.container .cardContent .inputMoney .selectGrayBG input[type=number]::-webkit-inner-spin-button, .container .cardContent .inputMoney .selectGrayBG input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.container .cardContent .inputMoney .selectGrayBG input[type=number]:focus {
+  outline: 0;
+  background-color: none;
+	border-bottom: 2px solid #009CEA;
+}
+.container .cardContent .inputMoney .selectGrayBG .inputMoneyCategory {
+  position: absolute;
+  left: 32px;
+  top: 46px;
+  color: #808080;
+  font-size: 18px;
+}
+.container .standardBTN {
+  /*margin: 16px 0;*/
+  padding: 12px;
+  border-radius: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+.container .standardBTN.main {
+  background: linear-gradient(135deg, #39C2E4, #2E7BC2);
+  box-shadow: 0 2px 16px rgba(0, 156, 234, 0.5);
+  color: #fff;
+}
+.container .standardBTN.normal {
+  border: 2px solid #009CEA;
+  color: #009CEA;
+  background: #fff;
+}
+.container .standardBTN.normal span {
+  font-size: 12px;
+}
+
+.seqLimitRow{
+	position: relative;
+	top: 4px;
+	float: right;
+	font-size: 12px;
+	color: #ff3333;
+}
+
+
+
+/*手機版面*/
+@media (max-width: 700px){
+	.container {
+      width: 100%;
+      margin: 0px;
+	  max-width: 700px;
+  }
+	.container .cardHeader {
+    border-radius:  0px;
+	}
+	.container .standardBTN{
+		width: 90%;
+		margin: 16px auto;
+	}
+}
+
+/*電腦版面*/
+@media (min-width: 701px){
+	.container {
+      width: 90%;
+      margin: 24px auto;
+	  max-width: 700px;
+   }	
+	
+	.container .cardHeader {
+    border-radius: 12px 12px 0 0;
+	}
+	.container .standardBTN{
+		width: 100%;
+		margin: 16px 0;
+	}
+}

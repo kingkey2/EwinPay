@@ -1,0 +1,32 @@
+{"status":"1","msg":"success","data":{"tokenId":"5bd2afed5c9d456fb317a289623e0ba9","orderCode":"PC20191111183746486777485"}}
+{"status":"1","msg":"success","data":{"tokenId":"1b37223dc75d4e3294632123f33184be","orderCode":"PC20191111185241001772332"}}
+{"status":"1","msg":"success","data":{"tokenId":"f0504166943747c9b3f4d31e3f85cbef","orderCode":"PC20191111190042440739624"}}
+{"status":"1","msg":"success","data":{"tokenId":"4cec1001dad44bc4810d329564874604","orderCode":"PC20191111190120646410849"}}
+{"status":"1","msg":"success","data":{"tokenId":"3f61e4029961442698d68f6aec95848e","orderCode":"PC20191111190141340950118"}}
+{"status":"0","msg":"当前玩家未支付订单过多","data":"E000018"}
+{"status":"0","msg":"当前玩家未支付订单过多","data":"E000018"}
+{"status":"0","msg":"当前玩家未支付订单过多","data":"E000018"}
+{"status":"1","msg":"success","data":{"tokenId":"2b8c0a61e97840759592a51602ed9617","orderCode":"PC20191111192334136276085"}}
+{"status":"1","msg":"success","data":{"tokenId":"dd18c9039880486cb2c11bf78072181e","orderCode":"PC20191111192452169382056"}}
+{"status":"1","msg":"success","data":{"tokenId":"c8aa500bc7684ae89c24c737c9146818","orderCode":"PC20191111192847769389483"}}
+{"status":"1","msg":"success","data":{"tokenId":"77abb8b826b042b2b04e518ffaa9e1dd","orderCode":"PC20191111192926978011049"}}
+{"status":"1","msg":"success","data":{"tokenId":"1892b06755e046e5b8f00728e3c3b10a","orderCode":"PC20191111192947166109028"}}
+{"status":"1","msg":"success","data":{"tokenId":"2f664b2d64784b30810de546042ec09d","orderCode":"PC20191111193048794135935"}}
+{"status":"1","msg":"success","data":{"tokenId":"bc26e6225de74365839b744cbc55007e","orderCode":"PC20191111193216151690440"}}
+signStart
+signError
+signStart
+mysign:6734e9f49937c293ed4138d9462bfc31
+mydata:NREHacoX6LX2pQry79UYw4KgpPZ8MK6rq7qe6OWkqQJADChtKQY1JTGqamounts=10.000000&createDate=2019-11-11 21:22:03&exp=1573478675932&flag=0&gameCode=9V06SR9NVS&orderCode=PC20191111212203372423058&orderId=PT2019111121220000000735&partnerId=1564415886881783&remark=null&sign=43292114089948363F364996A5333519&status=2&tokenId=b9cbd7c1620a49fab3ead80028dfc37f&updateDate=2019-11-11 21:24:07&userId=PT2019111121220000000735&NREHacoX6LX2pQry79UYw4KgpPZ8MK6rq7qe6OWkqQJADChtKQY1JTGq
+{"amounts":"10.000000","partnerId":"1564415886881783","userId":"PT2019111121220000000735","gameCode":"9V06SR9NVS","orderId":"PT2019111121220000000735","exp":"1573478675932","sign":"43292114089948363F364996A5333519","orderCode":"PC20191111212203372423058","createDate":"2019-11-11 21:22:03","updateDate":"2019-11-11 21:24:07","status":"2","remark":"null","tokenId":"b9cbd7c1620a49fab3ead80028dfc37f","flag":"0"}
+signError
+signStart
+mysign:004a2a580b76ed489679c1bcb1f0095c
+mydata:NREHacoX6LX2pQry79UYw4KgpPZ8MK6rq7qe6OWkqQJADChtKQY1JTGqamounts=10.000000&createDate=2019-11-11 21:32:55&exp=1573479311649&flag=0&gameCode=9V06SR9NVS&orderCode=PC20191111213255666924536&orderId=PT2019111121320000000736&partnerId=1564415886881783&remark=null&status=2&tokenId=7e7ad01be8cc4d0dbe7ceae5140aff7b&updateDate=2019-11-11 21:34:06&userId=PT2019111121320000000736&NREHacoX6LX2pQry79UYw4KgpPZ8MK6rq7qe6OWkqQJADChtKQY1JTGq
+{"amounts":"10.000000","partnerId":"1564415886881783","userId":"PT2019111121320000000736","gameCode":"9V06SR9NVS","orderId":"PT2019111121320000000736","exp":"1573479311649","sign":"004A2A580B76ED489679C1BCB1F0095C","orderCode":"PC20191111213255666924536","createDate":"2019-11-11 21:32:55","updateDate":"2019-11-11 21:34:06","status":"2","remark":"null","tokenId":"7e7ad01be8cc4d0dbe7ceae5140aff7b","flag":"0"}
+signError
+signStart
+GetpaymentSerial
+GetStatus
+GetStatus2
+OK

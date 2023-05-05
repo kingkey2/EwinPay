@@ -1,0 +1,28 @@
+﻿{
+  "ProviderCode": "AsiaPlay888",
+  "Charset": "UTF-8",
+  "ProviderUrl": "https://api.exjp.online/Transaction/CreateTransaction",
+  "QueryOrderUrl": "https://api.exjp.online/Transaction/CheckTransaction",
+  "QueryBalanceUrl": "",
+  "MerchantCode": "KIRO001",
+  "MerchantKey": "7a321d",
+  "NotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/AsiaPlay888Notify",
+  "NotifySyncUrl": "",
+  "WithdrawUrl": "https://api.exjp.online/Pay/CreatePay",
+  "WithdrawNotifyAsyncUrl": "http://epay.dev4.mts.idv.tw/api/CallBack/AsiaPlay888WithdrawNotify",
+  "QueryWithdrawUrl": "https://api.exjp.online/Pay/CheckPay",
+  "CallBackUrl": "http://epay.dev4.mts.idv.tw/ResultSuccess.cshtml",
+  "RequestType": 2,
+  "ProviderPublicKey": "",
+  "ProviderIP": [
+    "35.201.209.217"
+  ],
+  "ServiceSettings": [
+    {
+      "ServiceType": "JOOB06",
+      "TradeType": "1"
+    }
+  ],
+  "CurrencyTypeSettings": null,
+  "OtherDatas": null
+}

@@ -1,0 +1,43 @@
+﻿{
+  "BankCodeSettings": [
+   
+
+
+    {
+      "BankName": "株式会社青森銀行",
+      "HeroPay": "JPT0117"
+    },
+ 
+    {
+      "BankName": "株式会社岩手銀行",
+      "HeroPay": "JPT0123"
+    },
+    {
+      "BankName": "株式会社東北銀行",
+      "HeroPay": "JPT0124"
+    },
+  
+    {
+      "BankName": "株式会社東邦銀行",
+      "HeroPay": "JPT0126"
+    },
+  
+
+  
+    {
+      "BankName": "株式会社武蔵野銀行",
+      "HeroPay": "JPT0133"
+    },
+  
+    {
+      "BankName": "株式会社千葉興業銀行",
+      "HeroPay": "JPT0135"
+    },
+    {
+      "BankName": "株式会社東京都民銀行",
+      "HeroPay": "JPT0137"
+    },
+   
+
+  ]
+}

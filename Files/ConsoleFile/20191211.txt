@@ -1,0 +1,60 @@
+{
+  "PaymentSerial": "PT2019121116330000000887",
+  "PaymentStatus": 0,
+  "OrderAmount": 100.0,
+  "PaymentAmount": 100.0,
+  "ServiceType": "CP001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "",
+  "OrderID": "c6ed1b714ecd43b9becdce04cc1184e3",
+  "OrderDate": "2019-12-11 16:33:27",
+  "Sign": "B0E97675DCEA4386357241E43246ED34F5C832EFA1B61A7124BE6CFBE2FEDDC3",
+  "Status": 0,
+  "Message": null
+} 4:37 PM
+{
+  "PaymentSerial": "PT2019121116330000000887",
+  "PaymentStatus": 0,
+  "OrderAmount": 100.0,
+  "PaymentAmount": 100.0,
+  "ServiceType": "CP001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "",
+  "OrderID": "c6ed1b714ecd43b9becdce04cc1184e3",
+  "OrderDate": "2019-12-11 16:33:27",
+  "Sign": "B0E97675DCEA4386357241E43246ED34F5C832EFA1B61A7124BE6CFBE2FEDDC3",
+  "Status": 0,
+  "Message": null
+} 4:37 PM
+{
+  "PaymentSerial": "PT2019121116330000000887",
+  "PaymentStatus": 0,
+  "OrderAmount": 100.0,
+  "PaymentAmount": 100.0,
+  "ServiceType": "CP001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "",
+  "OrderID": "c6ed1b714ecd43b9becdce04cc1184e3",
+  "OrderDate": "2019-12-11 16:33:27",
+  "Sign": "B0E97675DCEA4386357241E43246ED34F5C832EFA1B61A7124BE6CFBE2FEDDC3",
+  "Status": 0,
+  "Message": null
+} 4:37 PM
+{
+  "PaymentSerial": "PT2019121116330000000887",
+  "PaymentStatus": 0,
+  "OrderAmount": 100.0,
+  "PaymentAmount": 100.0,
+  "ServiceType": "CP001",
+  "CurrencyType": "CNY",
+  "CompanyCode": "Mgmt",
+  "BankSequenceID": "",
+  "OrderID": "c6ed1b714ecd43b9becdce04cc1184e3",
+  "OrderDate": "2019-12-11 16:33:27",
+  "Sign": "B0E97675DCEA4386357241E43246ED34F5C832EFA1B61A7124BE6CFBE2FEDDC3",
+  "Status": 0,
+  "Message": null
+} 4:37 PM

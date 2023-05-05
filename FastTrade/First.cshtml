@@ -1,0 +1,630 @@
+﻿@{
+    //var orderID = Guid.NewGuid().ToString("N");
+    var orderID = Request.Params["OrderID"];
+    var companyCode = Request.Params["CompanyCode"];
+    var strSelCurrency = Request.Params["SelCurrency"];
+    var strSelServiceType = Request.Params["SelServiceType"];
+    var strAssignAmount = Request.Params["AssignAmount"];
+    var strRealName = Request.Params["RealName"];
+    var Sign = Request.Params["Sign"];
+    var redirectAction = "./Second.cshtml";
+
+    System.Data.DataTable DT;
+    int PaymentMethod = 0;
+    string CompanyKey;
+
+    /*
+        0 => 一般
+        1 => 指定可選幣別
+        2 => 指定金額幣別
+     */
+
+    int companyID;
+    decimal assignAmount = 0;
+    string assignCurrency = "";
+    string companyName = null;
+    List<string> canUseCurrency = new List<string>();
+    List<Tuple<int, int, string, string, string>> canUseServices = new List<Tuple<int, int, string, string, string>>();
+    var clientIP = Request.UserHostAddress;
+    Newtonsoft.Json.Linq.JArray ServiceDatailList = new Newtonsoft.Json.Linq.JArray();
+
+
+    /*
+     301 => 使用了SelCurrency與AssignAmount並沒給sign
+     302 => 缺少公司資料
+     303 => 未傳入訂單資料
+     304 => 未設定公司幣別資料
+     305 => SelCurrency有誤
+     3061 => AssignAmount格式有誤
+     3062 => AssignAmount格式有誤
+     3063 => AssignAmount格式有誤
+     3064 => AssignAmount 指定的幣別不能使用
+     307  => signError
+     */
+
+    if (string.IsNullOrEmpty(strAssignAmount))
+    {
+        if (string.IsNullOrEmpty(strSelCurrency))
+        {
+            PaymentMethod = 0;
+        }
+        else
+        {
+            if (string.IsNullOrEmpty(Sign))
+            {
+                Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=301");
+            }
+            else
+            {
+                PaymentMethod = 1;
+            }
+        }
+    }
+    else
+    {
+        if (string.IsNullOrEmpty(Sign))
+        {
+            Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=301");
+        }
+        else
+        {
+            PaymentMethod = 2;
+        }
+    }
+
+
+
+
+    DT = RedisCache.Company.GetCompanyByCode(companyCode);
+
+
+    if (!string.IsNullOrEmpty(orderID))
+    {
+        if ((DT != null && DT.Rows.Count > 0))
+        {
+            companyID = (int)DT.Rows[0]["CompanyID"];
+            companyName = (string)DT.Rows[0]["CompanyName"];
+            CompanyKey = (string)DT.Rows[0]["CompanyKey"];
+            DT = RedisCache.CompanyPoint.GetCompanyPointByID(companyID);
+            if ((DT != null && DT.Rows.Count > 0))
+            {
+                for (int i = 0; i < DT.Rows.Count; i++)
+                {
+                    canUseCurrency.Add(DT.Rows[i]["CurrencyType"].ToString());
+                }
+
+                DT = PayDB.GetCompanyServiceAll(companyID);
+
+                if (DT != null && DT.Rows.Count > 0)
+                {
+                    for (int i = 0; i < DT.Rows.Count; i++)
+                    {
+                        if (!string.IsNullOrEmpty(strSelServiceType))
+                        {
+                            List<string> selServiceType = strSelServiceType.Split(',').ToList();
+                            if (selServiceType.Contains(DT.Rows[i]["ServiceType"].ToString()))
+                            {
+                                canUseServices.Add(new Tuple<int, int, string, string, string>((int)DT.Rows[i]["ServiceSupplyType"],
+                                 (int)DT.Rows[i]["ServicePaymentType"],
+                                 DT.Rows[i]["ServiceType"].ToString(),
+                                 DT.Rows[i]["ServiceTypeName"].ToString(),
+                                 DT.Rows[i]["CurrencyType"].ToString()
+                                 ));
+
+                                var serviceData = new Newtonsoft.Json.Linq.JObject(
+                             new Newtonsoft.Json.Linq.JProperty("MaxOnceAmount", (decimal)DT.Rows[i]["MaxOnceAmount"]),
+                             new Newtonsoft.Json.Linq.JProperty("MinOnceAmount", (decimal)DT.Rows[i]["MinOnceAmount"]),
+                             new Newtonsoft.Json.Linq.JProperty("ServiceType", (string)DT.Rows[i]["ServiceType"]),
+                             new Newtonsoft.Json.Linq.JProperty("CurrencyType", (string)DT.Rows[i]["CurrencyType"])
+                            );
+                                ServiceDatailList.Add(serviceData);
+                            }
+
+                        }
+                        else
+                        {
+                            canUseServices.Add(new Tuple<int, int, string, string, string>((int)DT.Rows[i]["ServiceSupplyType"],
+                                (int)DT.Rows[i]["ServicePaymentType"],
+                                DT.Rows[i]["ServiceType"].ToString(),
+                                DT.Rows[i]["ServiceTypeName"].ToString(),
+                                DT.Rows[i]["CurrencyType"].ToString()
+                                ));
+
+                            var serviceData = new Newtonsoft.Json.Linq.JObject(
+                             new Newtonsoft.Json.Linq.JProperty("MaxOnceAmount", (decimal)DT.Rows[i]["MaxOnceAmount"]),
+                             new Newtonsoft.Json.Linq.JProperty("MinOnceAmount", (decimal)DT.Rows[i]["MinOnceAmount"]),
+                             new Newtonsoft.Json.Linq.JProperty("ServiceType", (string)DT.Rows[i]["ServiceType"]),
+                             new Newtonsoft.Json.Linq.JProperty("CurrencyType", (string)DT.Rows[i]["CurrencyType"])
+
+                            );
+                            ServiceDatailList.Add(serviceData);
+                        }
+
+
+                        //serviceData["MaxOnceAmount"] = (decimal)DT.Rows[i]["MaxOnceAmount"];
+                        //serviceData["MinOnceAmount"] = (decimal)DT.Rows[i]["MinOnceAmount"];
+                        //serviceData["ServiceType"] = (string)DT.Rows[i]["ServiceType"];
+                    }
+
+                    //if (PaymentMethod == 1 || PaymentMethod == 2) {
+                    //    //簽名檢查
+                    //    //Check Sign
+                    //    string signStr = "CompanyCode=" + companyCode;
+                    //    signStr += "&OrderID=" + orderID;
+                    //    signStr += "&SelCurrency=" + strSelCurrency;
+                    //    signStr += "&AssignAmount=" + strAssignAmount;
+                    //    signStr += "&CompanyKey=" + CompanyKey;
+
+                    //    if (CodingControl.GetSHA256(signStr, false).ToUpper() != Sign.ToUpper()) {
+                    //        Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=207");
+                    //    }
+                    //}
+
+                    #region  類型檢查
+
+                    switch (PaymentMethod)
+                    {
+                        case 0:
+                            break;
+                        case 1:
+
+                            #region PaymentMethod1
+                            List<string> selCurrency = strSelCurrency.Split(',').ToList();
+
+                            canUseCurrency = selCurrency.Intersect(canUseCurrency).ToList();
+
+                            if (selCurrency.Count == 0)
+                            {
+                                Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=305");
+                            }
+
+                            #endregion
+
+                            break;
+                        case 2:
+                            #region PaymentMethod2
+
+                            if (System.Text.RegularExpressions.Regex.Match(strAssignAmount, @"^[a-z|A-Z]+[\d]+$").Success)
+                            {
+                                string[] substrings = System.Text.RegularExpressions.Regex.Split(strAssignAmount, @"([\d]+$)");    // Split on hyphens
+                                if (substrings.Length == 3)
+                                {
+                                    assignCurrency = substrings[0];
+                                    if (decimal.TryParse(substrings[1], out assignAmount))
+                                    {
+                                        if (!canUseCurrency.Contains(assignCurrency.ToUpper()))
+                                        {
+                                            Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=3064");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=3063");
+                                    }
+                                }
+                                else
+                                {
+                                    Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=3062");
+                                }
+
+                            }
+                            else
+                            {
+                                Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=3061");
+                            }
+
+                            #endregion
+                            break;
+                    }
+
+                    #endregion
+
+                }
+                else
+                {
+                    Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=303");
+                }
+            }
+            else
+            {
+                Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=304");
+            }
+        }
+        else
+        {
+            Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=302");
+        }
+    }
+    else
+    {
+        Response.Redirect("../resultPage_ERROR.cshtml?ResultCode=303");
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Language" content="zh-tw" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="Description" content="Vpay">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimal-ui, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--  Css  -->
+    <link rel="stylesheet" href="/FastTrade/imageAndCss/p1.css" />
+    <title>Vpay</title>
+    <script>
+        var nowCurrency = '@canUseCurrency.FirstOrDefault()';
+        var nowService = null;
+        var serviceDataList = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ServiceDatailList));
+
+
+        window.onload = function () {
+            document.getElementById("btnSumit").onclick = function () {
+                var checkInput;
+                //是否有選取支付方式
+                checkInput = document.getElementById("inputServiceType");
+                if (!(checkInput && checkInput.value && checkInput.value != "")) {
+                    alert("尚未選擇支付方式");
+                    return;
+                }
+
+                checkInput = document.getElementById("inputAmount");
+                if ((checkInput && checkInput.value && checkInput.value != "")) {
+                    var checkAmount = Number(checkInput.value);
+
+                    if (!(checkAmount > 0)) {
+                        alert("金額不得小於0");
+                        return;
+                    }else {
+                        for (var i = 0; i < serviceDataList.length; i++) {
+                            if(serviceDataList[i].ServiceType == nowService && serviceDataList[i].CurrencyType == nowCurrency){
+                                if (checkAmount > serviceDataList[i].MaxOnceAmount || checkAmount < serviceDataList[i].MinOnceAmount) {
+                                    alert("限額有誤");
+                                    return;
+                                }
+                                break;
+                            }
+                        }
+                    }
+                } else {
+                    alert("尚未填寫金額");
+                    return;
+                }
+
+                var form = document.getElementById("PostForm");
+                form.submit();
+
+            }
+
+            document.getElementById("btnCancel").onclick = function () {
+                window.history.go(-1);
+            }
+
+            //呼叫幣別click
+            var parDiv = document.getElementById("selCurrency");
+            for (var i = 0; i < parDiv.children.length; i++) {
+                if (parDiv.children[i].classList.contains("active")) {
+                    parDiv.children[i].click();
+                    break;
+                }
+            }
+
+            parDiv = document.getElementById("selService");
+            for (var i = 0; i < parDiv.children.length; i++) {
+                if (parDiv.children[i].classList.contains("active")) {
+                    parDiv.children[i].click();
+                    break;
+                }
+            }
+
+        }
+
+        function resetCurrency() {
+            var input1 = document.getElementById("inputServiceType");
+            var input2 = document.getElementById("inputServicePaymentType");
+            var input3 = document.getElementById("inputServiceTypeName");
+
+            input1.value = "";
+            input2.value = "";
+            input3.value = "";
+
+
+            var parDiv = document.getElementById("selService");
+            var isActive = false;
+            for (var i = 0; i < parDiv.children.length; i++) {
+                var dom = parDiv.children[i];
+                if (dom.dataset.currency == nowCurrency) {
+                    parDiv.children[i].style.display = "inline-block";
+                    if (!isActive) {
+                        isActive = true;
+                        parDiv.children[i].click();
+                    }
+                } else {
+                    parDiv.children[i].style.display = "none";
+                }
+            }
+        }
+
+        function selectCurrency(currency , dom) {
+            var parDiv = document.getElementById("selCurrency");
+            var input = document.getElementById("inputCurrency");
+            var span = document.getElementById("spanCurrency");
+            var target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+            input.value = currency;
+            span.innerHTML = currency;
+            nowCurrency = currency;
+            for (var i = 0; i < parDiv.children.length; i++) {
+                parDiv.children[i].classList.remove("active")
+            }
+
+            dom.classList.add("active");
+            resetCurrency();
+        }
+
+        function selectService(service ,servicePaymentType ,serviceTypeName ,dom) {
+            var parDiv = document.getElementById("selService");
+            var input1 = document.getElementById("inputServiceType");
+            var input2 = document.getElementById("inputServicePaymentType");
+            var input3 = document.getElementById("inputServiceTypeName");
+            var target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+
+            input1.value = service;
+            input2.value = servicePaymentType;
+            input3.value = serviceTypeName;
+
+            for (var i = 0; i < parDiv.children.length; i++) {
+                parDiv.children[i].classList.remove("active")
+            }
+
+            dom.classList.add("active");
+            nowService = service;
+
+            for (var i = 0; i < serviceDataList.length; i++) {
+                if(serviceDataList[i].ServiceType == nowService && serviceDataList[i].CurrencyType == nowCurrency){
+                    var domMaxLimit = document.getElementById("spanMaxLimit");
+                    var domMinLimit = document.getElementById("spanMinLimit");
+                    domMaxLimit.innerText = serviceDataList[i].MaxOnceAmount;
+                    domMinLimit.innerText = serviceDataList[i].MinOnceAmount;
+                    break;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="PostForm" name="PostForm" method="post" action="@redirectAction">
+        <div class="container">
+            <div class="cardHeader">
+                <h3><span class="language_replace">快速存款</span></h3>
+                <span class="hr"></span>
+                <p>
+                    <span class="language_replace lighter">存款平台:</span>
+                    <span class="language_replace bold">@companyName</span>
+                </p>
+                @*最後要隱藏*@
+                @*<p>
+                        <span class="language_replace lighter">存款帳號:</span>
+                        <span class="language_replace bold">@companyCode</span>
+                    </p>*@
+            </div>
+            <div class="cardContent">
+                <div class="selectMoney">
+                    <div class="selectTitle">
+                        <span class="titleNumber">1</span>
+                        @if (PaymentMethod == 2)
+                        {
+                            <span class="language_replace seqTitle">幣別：</span>
+                        }
+                        else
+                        {
+                            <span class="language_replace seqTitle">選擇幣別：</span>
+                        }
+                    </div>
+                    <div id="selCurrency" class="selectGrayBG">
+                        @if (PaymentMethod == 2)
+                        {
+                            <div class="selectMoneyBTN active" onclick="selectCurrency(assignCurrency, this)">
+                                <span class="money">@assignCurrency</span>
+                            </div>
+                        }
+                        else
+                        {
+                            for (int i = 0; i < canUseCurrency.Count; i++)
+                            {
+                                if (i == 0)
+                                {
+                                    <div class="selectMoneyBTN active" onclick="selectCurrency('@canUseCurrency[i]',this)">
+                                        <span class="money">@canUseCurrency[i]</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="selectMoneyBTN" onclick="selectCurrency('@canUseCurrency[i]',this)">
+                                        <span class="money">@canUseCurrency[i]</span>
+                                    </div>
+                                }
+                            }
+                        }
+
+
+                        <!-- 選擇到的物件新增active 不能使用的物件新增disabled-->
+                        @*<div class="selectMoneyBTN disabled" onclick=""><span class="money">PHP</span></div>*@
+                    </div>
+                </div>
+                <div class="selectPay">
+                    <div class="selectTitle">
+                        <span class="titleNumber">2</span>
+                        <span class="language_replace seqTitle">選擇儲值方式：</span>
+                    </div>
+                    <div id="selService" class="selectGrayBG">
+
+                        @for (int i = 0; i < canUseServices.Count; i++)
+                        {
+                            string serviceImgName = "";
+                            string serviceName = "";
+                            string paymentTypeName = "";
+                            string paymentTypeImgName = "";
+                            switch (canUseServices[i].Item1)
+                            {
+                                case 1:
+                                    serviceImgName = "icon_alipay.png";
+                                    serviceName = "支付寶";
+                                    break;
+                                case 2:
+                                    serviceImgName = "icon_wechat.png";
+                                    serviceName = "微信";
+                                    break;
+                                case 3:
+                                    serviceImgName = "icon_alipay.png";
+                                    serviceName = "QQ";
+                                    break;
+                                case 4:
+                                    serviceImgName = "icon_unionpay_cloud.png";
+                                    serviceName = "雲閃付";
+                                    break;
+                                case 5:
+                                    serviceImgName = "icon_unionpay.png";
+                                    serviceName = "銀聯快捷";
+                                    break;
+                                case 6:
+                                    serviceImgName = "icon_onlinebank.png";
+                                    serviceName = "在線網銀";
+                                    break;
+                                case 7:
+                                    serviceImgName = "icon_onlinebank.png";
+                                    serviceName = "京東";
+                                    break;
+                                case 8:
+                                    serviceImgName = "icon_onlinebank.png";
+                                    serviceName = "百度";
+                                    break;
+                                case 9:
+                                    serviceImgName = "icon_onlinebank.png";
+                                    serviceName = "銀行卡轉帳";
+                                    break;
+                                default:
+                                    serviceImgName = "icon_onlinebank.png";
+                                    serviceName = "其他";
+                                    break;
+                            }
+
+                            switch (canUseServices[i].Item2)
+                            {
+                                case 1:
+                                    paymentTypeImgName = "icon_card.png";
+                                    paymentTypeName = "銀行卡";
+                                    break;
+                                case 2:
+                                    paymentTypeImgName = "icon_scan.png";
+                                    paymentTypeName = "掃碼";
+                                    break;
+                                case 3:
+                                    paymentTypeImgName = "icon_html5.png";
+                                    paymentTypeName = "H5";
+                                    break;
+                                default:
+                                    paymentTypeImgName = "icon_html5.png";
+                                    paymentTypeName = "其他";
+                                    break;
+                            }
+                            if (@canUseServices[i].Item3 != "OB003")
+                            {
+                                if (i == 0)
+                                {
+                                    <div data-currency="@canUseServices[i].Item5" class="selectTitleBTN active" onclick="selectService('@canUseServices[i].Item3','@canUseServices[i].Item2', '@canUseServices[i].Item4', this)">
+                                        <img class="selectPayImg" src="/FastTrade/imageAndCss/@serviceImgName" />
+                                        <br />
+                                        <span class="selectPayName language_replace">@serviceName</span>
+                                        <div class="selectPayWay">
+                                            <img src="/FastTrade/imageAndCss/@paymentTypeImgName" />
+                                            <span class="language_replace">@paymentTypeName</span>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div data-currency="@canUseServices[i].Item5" class="selectTitleBTN" onclick="selectService('@canUseServices[i].Item3','@canUseServices[i].Item2', '@canUseServices[i].Item4' , this)">
+                                        <img class="selectPayImg" src="/FastTrade/imageAndCss/@serviceImgName" />
+                                        <br />
+                                        <span class="selectPayName language_replace">@serviceName</span>
+                                        <div class="selectPayWay">
+                                            <img src="/FastTrade/imageAndCss/@paymentTypeImgName" />
+                                            <span class="language_replace">@paymentTypeName</span>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        }
+                        <!-- 選擇到的物件新增 "active"的Class -->
+                    </div>
+                </div>
+                <div class="inputMoney">
+                    <div class="selectTitle">
+                        <span class="titleNumber">3</span>
+                        @if (PaymentMethod == 2)
+                        {
+                            <span class="language_replace seqTitle">存款金額：</span>
+                        }
+                        else
+                        {
+                            <span class="language_replace seqTitle">輸入存款金額：</span>
+                        }
+                        <div class="seqLimitRow">
+                            <span class="language_replace seqLimitText">存款金額限制：</span>
+                            <span id="spanMinLimit" class="language_replace seqLimitMin">500</span>
+                            <span> - </span>
+                            <span id="spanMaxLimit" class="language_replace seqLimitMax">20,000</span>
+                        </div>
+                    </div>
+                    <div class="selectGrayBG">
+                        @if (PaymentMethod == 2)
+                        {
+                            <input id="inputAmount" type="number" name="OrderAmount" value="@assignAmount" readonly="readonly" />
+                            <span id="spanCurrency" class="inputMoneyCategory">@assignCurrency</span>
+                        }
+                        else
+                        {
+                            <input id="inputAmount" type="number" name="OrderAmount" placeholder="0" />
+                            <span id="spanCurrency" class="inputMoneyCategory">@canUseCurrency.FirstOrDefault()</span>
+                        }
+                    </div>
+                </div>
+
+                <div id="otherDiv" style="display:none">
+                    <input type="text" name="CompanyCode" value="@companyCode" style="width:80%;" />
+                    @if (PaymentMethod == 2)
+                    {
+                        <input id="inputCurrency" type="text" name="CurrencyType" value="@assignCurrency" style="width:80%;" />
+                    }
+                    else
+                    {
+                        <input id="inputCurrency" type="text" name="CurrencyType" value="@canUseCurrency.FirstOrDefault()" style="width:80%;" />
+                    }
+                    <input id="inputServiceType" type="text" name="ServiceType" value="" style="width:80%;" />
+                    <input type="text" name="ClientIP" value="@clientIP" style="width:80%;" />
+                    <input type="text" name="OrderID" value="@orderID" style="width:80%;" />
+                    <input type="text" name="CompanyName" value="@companyName" style="width:80%;" />
+                    <input id="inputServicePaymentType" type="text" name="ServicePaymentType" value="" style="width:80%;" />
+                    <input id="inputServiceTypeName" type="text" name="ServiceTypeName" value="" style="width:80%;" />
+                    <input type="text" name="SelCurrency" value="@strSelCurrency" style="width:80%;" />
+                    <input type="text" name="AssignAmount" value="@strAssignAmount" style="width:80%;" />
+                    <input type="text" name="RealName" value="@strRealName" style="width:80%;" />
+                    <input type="text" name="Sign" value="@Sign" style="width:80%;" />
+                </div>
+            </div>
+            <div class="standardBTN main" id="btnSumit"><span class="language_replace">確認</span></div>
+            <div class="standardBTN normal" id="btnCancel"><span class="language_replace">取消</span></div>
+        </div>
+    </form>
+</body>
+</html>

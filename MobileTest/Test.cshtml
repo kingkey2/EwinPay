@@ -1,0 +1,79 @@
+﻿@{
+
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="~/MobileTest/MobileBridge.js"></script>
+    <script type="text/javascript">
+        var AppBridge;
+        window.onload = function () {
+            AppBridge = new MobileBridge("JsBridge", "iosJsBridge");
+            document.getElementById("btnQRCode").onclick = function () {
+                AppBridge.openQRCode(function (qrStr) {
+                    alert(qrStr);
+                });
+            };
+            document.getElementById("btnQRCodeByAlbum").onclick = function () {
+                AppBridge.openQRCodeByAlbum(function (qrStr) {
+                    alert(qrStr);
+                });
+            };
+            document.getElementById("btnMobileInfo").onclick = function () {
+                AppBridge.getMobileInfo(function (deviceType, deviceName, osInfo, uuid) {
+                    var outStr = "deviceType = " + deviceType + '\n';
+                    outStr += "deviceName = " + deviceName + '\n';
+                    outStr += "osInfo = " + osInfo + '\n';
+                    outStr += "uuid = " + uuid + '\n';
+                    alert(outStr);
+                });
+            };
+            document.getElementById("btn4").onclick = function () {
+                AppBridge.getGPS(function (latitude, longitude, time) {
+                    var outStr = "緯度 = " + latitude + '\n';
+                    outStr += "經度 = " + longitude + '\n';
+                    outStr += "時間 = " + time + '\n';
+                    alert(outStr);
+                });
+            };
+            document.getElementById("btn5").onclick = function () {
+                AppBridge.getToken(function (type, token) {
+                    var outStr = "type = " + type + '\n';
+                    outStr += "token = " + token + '\n';
+                    alert(outStr);
+                });
+            };
+            document.getElementById("btn6").onclick = function () {
+                AppBridge.getPhoneAllData(function (obj) {
+                    var outStr = "緯度 = " + obj.latitude + '\n';
+                    outStr += "經度 = " + obj.longitude + '\n';
+                    outStr += "時間 = " + obj.time + '\n';
+                    outStr += "deviceType = " + obj.deviceType + '\n';
+                    outStr += "deviceName = " + obj.deviceName + '\n';
+                    outStr += "systemInfo = " + obj.systemInfo + '\n';
+                    outStr += "uuid = " + obj.ID + '\n';
+                    outStr += "type = " + obj.type + '\n';
+                    outStr += "token = " + obj.token + '\n';
+                    alert(outStr);
+                });
+            };
+            document.getElementById("test").onclick = function () {                
+                AppBridge.getTest(1,2,function (a, b) {
+                    var outStr = "a = " + a + '\n';
+                    outStr += "b = " + b + '\n';
+                    alert(outStr);
+                });
+            };
+        };
+    </script>
+</head>
+<body>
+    <button style="width:200px;height:200px" id="btnQRCode">QRCode</button>
+    <button style="width:200px;height:200px" id="btnMobileInfo">MobileInfo</button>
+    <button style="width:200px;height:200px" id="btnQRCodeByAlbum">QRCodeByAlbum</button>
+    <button style="width:200px;height:200px" id="btn4">GPS</button>
+    <button style="width:200px;height:200px" id="btn5">Token</button>
+    <button style="width:200px;height:200px" id="btn6">AllData</button>
+    <button style="width:200px;height:200px" id="test">test</button>
+</body>
+</html>

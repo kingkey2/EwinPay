@@ -1,0 +1,437 @@
+﻿@{
+//Provider_YPay.YPayBankData ypayBankData = null;
+
+//if (!string.IsNullOrEmpty(Request["BankData"]))
+//{
+//    ypayBankData = Newtonsoft.Json.JsonConvert.DeserializeObject<Provider_YPay.YPayBankData>(Request["BankData"]);
+//    if (Session["PaymentSerial"] == null)
+//    {
+//        Session["PaymentSerial"] = ypayBankData.PaymentSerial;
+//    }
+//    else {
+//        if (Session["PaymentSerial"].ToString() == ypayBankData.PaymentSerial) {
+//            Response.Redirect(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/Result.cshtml?ResultCode=" + HttpUtility.UrlEncode("交易失败"));
+//        }
+//    }
+
+//}
+//else {
+//    Response.Redirect(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/Result.cshtml?ResultCode=" + 120);
+//}
+
+//int CountdownTime = ypayBankData.TransactionTime;
+
+
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 微軟正黑體, 微軟雅黑體, Arial;
+            outline: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            background-image: url('image/TPay-bg.jpg');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 520px;
+            padding: 60px 30px;
+            background: rgba(0,0,0,0.65);
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+
+            .container h1 {
+                margin: 0 0 12px 0;
+                font-size: 30px;
+                color: #fff;
+            }
+
+        .list-group {
+            margin-bottom: 30px;
+        }
+
+        .list {
+            position: relative;
+            height: 36px;
+            line-height: 36px;
+            margin-bottom: 12px;
+        }
+
+        .list_title {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .list_content {
+            position: absolute;
+            left: 20%;
+            width: calc(100% - 20%);
+            height: 100%;
+            padding-left: 16px;
+            border-radius: 4px;
+            border: 0;
+            background: #fff;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+            .tooltip .tooltiptext {
+                position: absolute;
+                z-index: 1;
+                top: -5px;
+                left: 135%;
+                visibility: hidden;
+                width: 52px;
+                padding: 6px 0;
+                background-color: #222;
+                border-radius: 4px;
+                color: #fff;
+            }
+
+                .tooltip .tooltiptext::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 100%;
+                    margin-top: -5px;
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: transparent black transparent transparent;
+                }
+
+            .tooltip:hover .tooltiptext {
+                visibility: visible;
+            }
+
+        button {
+            position: absolute;
+            right: 0;
+            height: 36px;
+            padding: 0 10px;
+            border: 0;
+            border-left: 1px solid #666;
+            background-color: rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .button_container {
+            display: inline-flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        #showMessage {
+            display: inline-block;
+            width: 48%;
+            line-height: 36px;
+            text-align: center;
+        }
+
+            #showMessage.fail {
+                color: #ff8888;
+            }
+
+            #showMessage.waiting {
+                color: #aaa;
+            }
+
+            #showMessage.success {
+                color: #6cd167;
+            }
+
+        .button {
+            width: 48%;
+            height: 48px;
+            padding: 0;
+            border: 1px solid #4fc3f7;
+            border-radius: 4px;
+            background: transparent;
+            font-size: 16px;
+            color: #4fc3f7;
+            transition: 0.2s all;
+            cursor: pointer;
+        }
+
+            .button:hover {
+                background: #03a9f4;
+                border-color: #03a9f4;
+                color: #fff;
+            }
+
+            .button.disabled {
+                background: #aaa;
+                border: 0;
+                color: #eee;
+            }
+
+                .button.disabled:hover {
+                    background: #aaa;
+                    border: 0;
+                    color: #eee;
+                    cursor: not-allowed;
+                }
+
+        .button_confirm {
+            left: 0;
+            background: #4fc3f7;
+            color: #fff;
+        }
+
+            .button_confirm:hover {
+                background: #03a9f4;
+            }
+
+        .button_back {
+            right: 0;
+            box-shadow: inset 0 0 2px, 0 0 2px;
+        }
+
+            .button_back:hover {
+                box-shadow: none;
+            }
+
+        /* 直式 */
+        @@media only screen and (max-width: 414px) and (orientation: portrait) {
+            .container {
+                width: 100%;
+                padding: 36px 16px;
+                border-radius: 0;
+            }
+
+            .list {
+                height: auto;
+                line-height: 1.5;
+            }
+
+                .list label {
+                    display: block;
+                    margin-bottom: 2px;
+                }
+
+            .list_content {
+                position: initial;
+                width: 100%;
+                height: 36px;
+            }
+
+            button {
+                bottom: 0;
+            }
+        }
+        /* 橫式 */
+        @@media only screen and (max-width: 700px) and (orientation: landscape) {
+            .container {
+                height: 100vh;
+                padding: 16px 24px;
+                border-radius: 0;
+            }
+
+                .container h1 {
+                    font-size: 24px;
+                }
+
+            .list {
+                height: 30px;
+                line-height: 30px;
+                margin-bottom: 10px;
+            }
+
+            .list-group {
+                margin-bottom: 12px;
+            }
+
+            button {
+                height: 30px;
+            }
+
+            .button {
+                height: 30px;
+            }
+        }
+
+        @@media only screen and (min-width: 701px) and (max-width: 896px) and (orientation: landscape) {
+            .container {
+                height: 100vh;
+                padding: 16px 24px;
+                border-radius: 0;
+            }
+
+                .container h1 {
+                    font-size: 24px;
+                }
+
+            .list-group {
+                margin-bottom: 16px;
+            }
+
+            .button {
+                height: 36px;
+            }
+        }
+    </style>
+    <title></title>
+    <script type="text/javascript">
+
+        var clockInterval;
+
+        //var countdownTime= "CountdownTime";
+        var countdownTime= 12345;
+        window.onload = function () {
+            this.console.log('@Session["PaymentSerial"].ToString()')
+            clockInterval = setInterval(modifyTimeValue, 1000);
+            window.onbeforeunload = function (e) { (e || window.event).returnValue = '确定离开此页吗，将导致此笔订单失效？'; }
+        }
+
+
+
+        function modifyTimeValue() {
+
+            if (countdownTime <= 0) {
+                clearInterval(clockInterval);
+                document.getElementById('showMessage').classList.remove("waiting");
+                document.getElementById('showMessage').classList.add("fail");
+                document.getElementById('showMessage').textContent = '付款逾时';
+                document.getElementById("CountdownTime").value = 0 + " 分 " + 0 + " 秒 ";
+                document.getElementById('confirmBtn').classList.add("disabled");
+            } else {
+                formatDuring(countdownTime);
+            }
+        }
+
+        function formatDuring(mss) {
+
+            var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((mss % (1000 * 60)) / 1000);
+            document.getElementById("CountdownTime").value = minutes + " 分 " + seconds + " 秒 ";
+            countdownTime = countdownTime - 1000;
+        }
+
+        function CopyTextToClipboard(id) {
+
+            var TextRange = document.createRange();
+
+            TextRange.selectNode(document.getElementById(id));
+
+            sel = window.getSelection();
+
+            sel.removeAllRanges();
+
+            sel.addRange(TextRange);
+
+            document.execCommand("copy");
+
+            alert("复制完成！")
+
+        }
+
+
+        function confirmPayment() {
+
+            document.getElementById('showMessage').classList.remove("waiting");
+            document.getElementById('showMessage').classList.add("success");
+            document.getElementById('showMessage').textContent = '汇款成功';
+            document.getElementById('confirmBtn').classList.add("disabled");
+            clearInterval(clockInterval);
+
+        };
+
+
+    </script>
+</head>
+@*<body>
+
+    @{
+        <div class="container">
+            <h1></h1>
+            <div class="list-group">
+                <div class="list">
+                    <label for="" class="language_replace list_title">订单编号</label>
+                    <input id="PaymentSerial" class="list_content" disabled name="PaymentSerial" value="@ypayBankData.PaymentSerial" style="">
+                </div>
+
+                <div class="list">
+                    <label for="" class="language_replace list_title">金额</label>
+                    <input id="Amount" class="list_content" disabled name="Amount" value="@ypayBankData.Amount" style="">
+                </div>
+                <div class="list">
+                    <label for="" class="language_replace list_title">银行名称</label>
+                    <input id="forBankName" class="list_content" disabled name="forBankName" value="@ypayBankData.bank" style="">
+                    <button id="btnforBankName" onclick="CopyTextToClipboard('forBankName')">
+                        <div class="tooltip">
+                            <img src="image/copy.svg" width="18" alt="">
+                            <span class="tooltiptext language_replace">复制</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="list">
+                    <label for="" class="language_replace list_title">卡号</label>
+                    <input id="forBankCard" class="list_content" disabled name="forBankCard" value="@ypayBankData.AccountNumber" style="">
+                    <button id="btnforBankCard" onclick="CopyTextToClipboard('forBankCard')">
+                        <div class="tooltip">
+                            <img src="image/copy.svg" width="18" alt="">
+                            <span class="tooltiptext language_replace">复制</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="list">
+                    <label for="" class="language_replace list_title">
+                        姓名
+                    </label>
+                    <input id="forBankCardName" class="list_content" disabled name="forBankCardName" value="@ypayBankData.AccountName" style="">
+                    <button id="btnforBankCardName" onclick="CopyTextToClipboard('forBankCardName')">
+                        <div class="tooltip">
+                            <img src="image/copy.svg" width="18" alt="">
+                            <span class="tooltiptext language_replace">复制</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="list">
+                    <label for="" class="language_replace list_title">
+                        附言
+                    </label>
+                    <input id="forRemarks" class="list_content" disabled name="forRemarks" value="@ypayBankData.Remarks" style="">
+                    <button id="btnforRemarks" onclick="CopyTextToClipboard('forRemarks')">
+                        <div class="tooltip">
+                            <img src="image/copy.svg" width="18" alt="">
+                            <span class="tooltiptext language_replace">复制</span>
+                        </div>
+                    </button>
+                </div>
+                <div style="text-align:center;color:red;">
+                    转帐时请记得填写附言
+                </div>
+
+            </div>
+            <div class="button-group">
+                <div class="button_container">
+                    <input type="button" value="确认付款" runat="server" id="confirmBtn" class="button button_confirm" onclick="confirmPayment()">
+                    <input type="button" value="" runat="server" id="CountdownTime" onclick="" class="button button_back">
+                </div>
+        
+                <label id="showMessage"></label>
+            </div>
+        </div>
+
+    }
+
+</body>*@
+</html>

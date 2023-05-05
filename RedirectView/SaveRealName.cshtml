@@ -1,0 +1,342 @@
+﻿@{
+    int paymentID;
+    System.Data.DataTable DT;
+    GatewayCommon.Payment paymentModel;
+    GatewayCommon.ProviderRequestData providerRequestData = new GatewayCommon.ProviderRequestData();
+
+    if (int.TryParse(Request.Params["PaymentID"].ToString(), out paymentID))
+    {
+        DT = PayDB.GetPaymentByPaymentID(paymentID);
+
+        if (DT != null && DT.Rows.Count > 0)
+        {
+            paymentModel = GatewayCommon.ToList<GatewayCommon.Payment>(DT).FirstOrDefault();
+        }
+        else
+        {
+            PayDB.InsertDownOrderTransferLog("送单前查询不到订单", 0, "", paymentID.ToString(), "", true);
+        }
+    }
+    else
+    {
+        PayDB.InsertDownOrderTransferLog("建立订单失败", 0, "", Request.Params["PaymentID"].ToString(), "", true);
+    }
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 微軟正黑體, 微軟雅黑體, Arial;
+            outline: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            background-image: url('image/TPay-bg.jpg');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 520px;
+            padding: 60px 30px;
+            background: rgba(0,0,0,0.65);
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+
+            .container h1 {
+                margin: 0 0 12px 0;
+                font-size: 30px;
+                color: #fff;
+            }
+
+        .list-group {
+            margin-bottom: 30px;
+        }
+
+        .list {
+            position: relative;
+            height: 36px;
+            line-height: 36px;
+            margin-bottom: 12px;
+        }
+
+        .list_title {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .list_content {
+            position: absolute;
+            left: 20%;
+            width: calc(100% - 20%);
+            height: 100%;
+            padding-left: 16px;
+            border-radius: 4px;
+            border: 0;
+            background: #fff;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+            .tooltip .tooltiptext {
+                position: absolute;
+                z-index: 1;
+                top: -5px;
+                left: 135%;
+                visibility: hidden;
+                width: 52px;
+                padding: 6px 0;
+                background-color: #222;
+                border-radius: 4px;
+                color: #fff;
+            }
+
+                .tooltip .tooltiptext::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 100%;
+                    margin-top: -5px;
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: transparent black transparent transparent;
+                }
+
+            .tooltip:hover .tooltiptext {
+                visibility: visible;
+            }
+
+        button {
+            position: absolute;
+            right: 0;
+            height: 36px;
+            padding: 0 10px;
+            border: 0;
+            border-left: 1px solid #666;
+            background-color: rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .button_container {
+            display: inline-flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+        #showMessage {
+            display: inline-block;
+            width: 48%;
+            line-height: 36px;
+            text-align: center;
+        }
+
+            #showMessage.fail {
+                color: #ff8888;
+            }
+
+            #showMessage.waiting {
+                color: #aaa;
+            }
+
+            #showMessage.success {
+                color: #6cd167;
+            }
+
+        .button {
+            width: 48%;
+            height: 48px;
+            padding: 0;
+            border: 1px solid #4fc3f7;
+            border-radius: 4px;
+            background: transparent;
+            font-size: 16px;
+            color: #4fc3f7;
+            transition: 0.2s all;
+            cursor: pointer;
+        }
+
+            .button:hover {
+                background: #03a9f4;
+                border-color: #03a9f4;
+                color: #fff;
+            }
+
+            .button.disabled {
+                background: #aaa;
+                border: 0;
+                color: #eee;
+            }
+
+                .button.disabled:hover {
+                    background: #aaa;
+                    border: 0;
+                    color: #eee;
+                    cursor: not-allowed;
+                }
+
+        .button_confirm {
+            left: 0;
+            background: #4fc3f7;
+            color: #fff;
+        }
+
+            .button_confirm:hover {
+                background: #03a9f4;
+            }
+
+        .button_back {
+            right: 0;
+            box-shadow: inset 0 0 2px, 0 0 2px;
+        }
+
+            .button_back:hover {
+                box-shadow: none;
+            }
+
+        /* 直式 */
+        @@media only screen and (max-width: 414px) and (orientation: portrait) {
+            .container {
+                width: 100%;
+                padding: 36px 16px;
+                border-radius: 0;
+            }
+
+            .list {
+                height: auto;
+                line-height: 1.5;
+            }
+
+                .list label {
+                    display: block;
+                    margin-bottom: 2px;
+                }
+
+            .list_content {
+                position: initial;
+                width: 100%;
+                height: 36px;
+            }
+
+            button {
+                bottom: 0;
+            }
+        }
+        /* 橫式 */
+        @@media only screen and (max-width: 700px) and (orientation: landscape) {
+            .container {
+                height: 100vh;
+                padding: 16px 24px;
+                border-radius: 0;
+            }
+
+                .container h1 {
+                    font-size: 24px;
+                }
+
+            .list {
+                height: 30px;
+                line-height: 30px;
+                margin-bottom: 10px;
+            }
+
+            .list-group {
+                margin-bottom: 12px;
+            }
+
+            button {
+                height: 30px;
+            }
+
+            .button {
+                height: 30px;
+            }
+        }
+
+        @@media only screen and (min-width: 701px) and (max-width: 896px) and (orientation: landscape) {
+            .container {
+                height: 100vh;
+                padding: 16px 24px;
+                border-radius: 0;
+            }
+
+                .container h1 {
+                    font-size: 24px;
+                }
+
+            .list-group {
+                margin-bottom: 16px;
+            }
+
+            .button {
+                height: 36px;
+            }
+        }
+    </style>
+    <title></title>
+    <script type="text/javascript">
+
+
+        function confirmPayment() {
+
+
+            var frm = document.forms["PostForm"];
+            if (!frm.UserName.value.trim()) {
+                alert("实名不得为空");
+            } else {
+                frm.UserName.value = frm.UserName.value.trim();
+                frm.PaymentID.value =@paymentID;
+                document.getElementById('confirmBtn').disabled = true;
+                frm.submit();
+            }
+        };
+
+
+    </script>
+</head>
+<body>
+
+    @{
+    <div class="container">
+        <h1></h1>
+        <form id="PostForm" name="PostForm" method="post" action="/api/Gate/SavePayingUserName">
+            <div class="list-group">
+                <div class="list">
+                    <label for="" class="language_replace list_title">请输入实名</label>
+                    <input id="UserName" class="list_content" name="UserName" value="" style="">
+                </div>
+                <div style="text-align:center;color:red;">
+                    请填写正确实名,实名错误会导致无法到账或者退款失败!!
+                </div>
+                <input id="PaymentID" class="list_content" name="PaymentID" value="" style="display:none;" readonly="readonly">
+            </div>
+            <div class="button-group">
+                <div class="button_container">
+                    <input type="button" value="确认" runat="server" id="confirmBtn" class="button button_confirm" onclick="confirmPayment()">
+           
+                </div>
+
+                <label id="showMessage"></label>
+            </div>
+        </form>
+          
+    </div>
+
+    }
+
+</body>
+</html>
